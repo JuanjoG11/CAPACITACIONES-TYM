@@ -314,10 +314,6 @@
                     </fieldset>
                 </article>
 
-                <div class="btn-resultado-container">
-                    <a href="resultados.html" class="btn-resultado-grande">Ver Resultados</a>
-                </div>
-
                 <div class="formulario-actions">
                     <button type="submit" class="btn-submit">Enviar Evaluación</button>
                     <button type="reset" class="btn-reset">Limpiar Respuestas</button>
@@ -346,6 +342,46 @@
 
     <script src="../HTML/evaluation.js"></script>
     <script>
+        // Validar formulario antes de enviar
+        const evalForm = document.querySelector('#evalForm');
+        evalForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Obtener todos los grupos de preguntas
+            const preguntas = document.querySelectorAll('.pregunta');
+            let todasRespondidas = true;
+            let firstUnanswered = null;
+            let preguntasNoRespondidas = [];
+            
+            // Verificar si cada pregunta tiene una respuesta seleccionada
+            preguntas.forEach((pregunta, index) => {
+                const radioButtons = pregunta.querySelectorAll('input[type="radio"]');
+                if (radioButtons.length > 0) {
+                    const nombrePregunta = radioButtons[0].name;
+                    const respondida = document.querySelector(`input[name="${nombrePregunta}"]:checked`);
+                    
+                    if (!respondida) {
+                        todasRespondidas = false;
+                        preguntasNoRespondidas.push(nombrePregunta);
+                        if (!firstUnanswered) {
+                            firstUnanswered = pregunta;
+                        }
+                    }
+                }
+            });
+            
+            // Si no todas están respondidas, mostrar error
+            if (!todasRespondidas) {
+                alert('⚠️ ATENCIÓN:\n\nPor favor completa TODAS las preguntas antes de enviar la evaluación.\n\nPreguntas sin responder: ' + preguntasNoRespondidas.length);
+                // Volver al módulo 1 sin scroll
+                scrollToModule(0);
+                return false;
+            }
+            
+            // Si todas están respondidas, redirigir
+            window.location.href = 'resultado1.html';
+        });
+
         // Carousel navigation
         const carousel = document.querySelector('.modulos-carousel');
         const prevBtn = document.querySelector('.carousel-btn-prev');

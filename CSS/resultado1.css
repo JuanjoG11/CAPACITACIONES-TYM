@@ -1,73 +1,134 @@
 /* Importar variables centralizadas */
 @import url('./variables.css');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: var(--main-fon);
-    margin: 0;
-    background-color: #f2f4f8;
-    color: #333333;
+    background: #f5f7fb;
+    color: #1f2937;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;    
 }
 
-header {
+/* HEADER */
+
+.header-resultados {
     text-align: center;
+    padding: 3rem 1rem;
+}
+
+.header-resultados h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header-resultados p{
+    font-size: 1rem;
+    color: var(#6b7280);
+}
+
+/* CONTENERDOR PRINCIPAL */
+
+.contenedor-principal {
+    width: 100%;
+    max-width: 65rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: grid;
+    gap: 2rem;
+}
+
+/* CARDS */
+
+.card {
+    background: #ffffff;
+    border-radius: 0.75rem;
     padding: 2rem;
-    background-color: #1e88e5;
-    color: white;
+
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.08);
 }
 
-main {
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.card header {
+    margin-bottom: 1.5rem;
 }
 
-section {
-    margin-bottom: 3rem;
+.card h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
-section header h2 {
-    margin-bottom: 1rem;
-}
+/* RESULTADO GENERAL */
 
-article {
+.resultado-total{
     text-align: center;
-    padding: 2rem;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 10px;
 }
 
-#porcentajeFinal {
-    font-size: 3rem;
-    font-weight: bold;
-    margin: 0;
+.porcentaje {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #0b4fa1;
+    margin-bottom: 0.5rem;
 }
 
-figure {
-    margin: 0;
+.descripcion {
+    font-size: 1rem;
+    color: #6b7280;
 }
 
-canvas {
-    max-width: 100%;
+/* GRAFICO */
+
+.grafico-container {
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
 }
 
-footer {
+.grafico-container canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+figcaption {
+    margin-top: 1rem;
     text-align: center;
-    padding: 2rem;
+    font-size: 0.9rem;
+    color: #6b7280;
 }
 
-.boton {
+/* FOOTER */
+
+.footer-resultados {
+    margin-top: auto;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+/* BOTON */
+
+.boton-volver{
+    display: inline-block;
     text-decoration: none;
-    padding: 12px 25px;
-    background-color: #333333;
+
+    background: #0b4fa1;
     color: white;
-    border-radius: 8px;
-    transition: 0.3s;
+
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    transition: all 0.25s ease;
 }
 
-.boton:hover {
-    background-color: #555555;
+.boton-volver:hover {
+    transform: translateY(-0.15rem);
+    box-shadow: 0 0.4rem 0.9rem rgba(0,0,0,0.15);
 }
