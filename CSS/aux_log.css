@@ -1,13 +1,13 @@
 /* Importacion de las variables de entorno */
 @import url(./variables.css);
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+body{
     font-family: var(--main-font);
     background: #F4F6F9;
     display: flex;
@@ -16,7 +16,8 @@ body {
     min-height: 100vh;
 }
 
-.modulo {
+/* CONTENEDOR PRINCIPAL */
+.log-modulo{
     width: 60rem;
     background: white;
     padding: 2rem;
@@ -24,39 +25,44 @@ body {
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
-.modulo__header{
+/* HEADER */
+.log-modulo__header{
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.carousel {
+/* CAROUSEL */
+.log-carousel{
     text-align: center;
 }
 
-.carousel__slides{
+.log-carousel__slides{
     position: relative;
 }
 
-.slide{
+/* SLIDES */
+.log-slide{
     display: none;
 }
 
-.slide.active{
+.log-slide.active{
     display: block;
 }
 
-.slide img {
+.log-slide img{
     width: 100%;
     border-radius: 0.8rem;
     margin-bottom: 1rem;
 }
 
-figcaption {
+/* TEXTO DEBAJO DE LA IMAGEN */
+figcaption{
     font-size: 1rem;
     color: #444444;
 }
 
-.carousel__controls {
+/* CONTROLES */
+.log-carousel__controls{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,7 +70,8 @@ figcaption {
     margin-top: 1.5rem;
 }
 
-button {
+/* BOTONES */
+button{
     padding: 0.6rem 1.5rem;
     border: none;
     border-radius: 0.5rem;
@@ -78,7 +85,8 @@ button:disabled{
     cursor: not-allowed;
 }
 
-.evaluation {
+/* SECCIÓN EVALUACIÓN */
+.log-evaluacion{
     margin-top: 2rem;
     text-align: center;
 }

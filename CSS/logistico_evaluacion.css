@@ -1,51 +1,62 @@
 /* Importacion de las variables de entorno */
 @import url(./variables.css);
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
+body{
     font-family: var(--main-font);
     background: var(--gray-100);
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
     overflow: hidden;
     padding-bottom: 2rem;
 }
 
-.evaluacion{
+/* CONTENEDOR PRINCIPAL */
+
+.log-evaluacion{
     width: min(110rem, 95%);
     background: var(--gray-50);
     padding: 2rem;
+
     border-radius: 1rem;
     border: 0.1rem solid var(--gray-200);
+
     box-shadow: 0 0.8rem 2rem rgba(0,0,0,0.15);
 }
 
-.evaluacion__header{
+/* HEADER */
+
+.log-evaluacion__header{
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.evaluacion__header h1{
+.log-evaluacion__header h1{
     color: var(--primary1-950);
     margin-bottom: 0.5rem;
 }
 
-.evaluacion__header p{
+.log-evaluacion__header p{
     color: var(--gray-600);
 }
 
-.pregunta {
+/* PREGUNTAS */
+
+.log-pregunta{
     border: 0.1rem solid var(--gray-200);
     border-radius: 0.8rem;
     padding: 1.4rem;
     margin-bottom: 1.5rem;
+
     background: var(--white);
 
     display: grid;
@@ -53,16 +64,15 @@ body {
     gap: 0.6rem;
 
     transition: all 0.25s ease;
-    box-shadow: 0.2s;
 }
 
-.pregunta:hover {
+.log-pregunta:hover{
     border-color: var(--gray-400);
     transform: translateY(-0.3rem);
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.08);
 }
 
-.pregunta label {
+.log-pregunta label{
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
@@ -70,25 +80,28 @@ body {
 
     padding: 0.6rem;
     border-radius: 0.5rem;
+
     cursor: pointer;
     transition: 0.3s;
 }
 
-.pregunta label:hover{
+.log-pregunta label:hover{
     background: #E8F2FF;
 }
 
-.pregunta legend {
-    grid-column:  1 / -1;
+.log-pregunta legend{
+    grid-column: 1 / -1;
 }
 
-legend {
+/* TEXTO */
+
+legend{
     font-weight: 600;
     margin-bottom: 1rem;
     color: var(--gray-600);
 }
 
-label {
+label{
     display: block;
     padding: 0.6rem;
     border-radius: 0.4rem;
@@ -97,46 +110,55 @@ label {
     transition: 0.2s;
 }
 
-label:hover {
+label:hover{
     background: var(--gray-50);
 }
 
-input[type="radio"] {
+/* INPUTS */
+
+input[type="radio"]{
     transform: scale(1.1);
 }
 
-.acciones {
-    grid-column: 1/ -1;
+/* BOTONES */
+
+.log-acciones{
+    grid-column: 1 / -1;
 }
 
-button {
+button{
     background: var(--primary1-950);
     color: var(--white);
+
     border: none;
     padding: 0.8rem 2rem;
+
     border-radius: 0.6rem;
     font-size: 1rem;
+
     cursor: pointer;
     transition: 0.25s;
 }
 
-button:hover {
+button:hover{
     background: var(--gray-800);
 }
 
-.resultado {
+/* RESULTADO */
+
+.log-resultado{
     margin-top: 2rem;
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--gray-900);
+
     grid-column: 1 / -1;
 }
 
-/* FORMULARIO EN GRID */
+/* FORMULARIO GRID */
 
-#formEvaluacion {
+#log-formEvaluacion{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.4rem;
 }
-

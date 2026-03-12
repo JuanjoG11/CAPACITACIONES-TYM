@@ -1,48 +1,91 @@
-const container = document.querySelector(".carousel__slides");
-const slides = Array.from(container.querySelectorAll(".slide"));
-const next = document.getElementById("next");
-const prev = document.getElementById("prev");
-const contador = document.getElementById("contadro"); // coincides con el id en HTML
-const btnEvaluacion = document.getElementById("btnEvaluacion");
+document.addEventListener("DOMContentLoaded", () => {
+
+const modules = [
+    {
+        prefix: "log",
+        evaluacion: "logistico_evaluacion.html"
+    },
+    {
+        prefix: "sep",
+        evaluacion: "separacion_evaluacion.html"
+    }
+];
+
+modules.forEach(module => {
+
+const container = document.querySelector(`.${module.prefix}-carousel__slides`);
+const slides = document.querySelectorAll(`.${module.prefix}-slide`);
+
+const next = document.getElementById(`${module.prefix}-next`);
+const prev = document.getElementById(`${module.prefix}-prev`);
+
+const contador = document.getElementById(`${module.prefix}-contador`);
+const btnEvaluacion = document.getElementById(`${module.prefix}-btnEvaluacion`);
+
+if (!container || slides.length === 0) return;
 
 let index = 0;
 
-function updateIndex(i) {
-    index = i;
-    contador.textContent = `${i + 1} / ${slides.length}`;
-    btnEvaluacion.disabled = index !== slides.length - 1;
-    slides.forEach((s, idx) => s.classList.toggle("active", idx === index));
+function updateSlide(i){
+
+slides.forEach((slide, position)=>{
+slide.classList.toggle("active", position === i);
+});
+
+if(contador){
+contador.textContent = `${i + 1}/${slides.length}`;
 }
 
-function scrollToIndex(i) {
-    container.scrollTo({ left: slides[i].offsetLeft, behavior: "smooth" });
-    updateIndex(i);
+if(btnEvaluacion){
+btnEvaluacion.disabled = i !== slides.length - 1;
 }
 
+}
+
+if(next){
 next.addEventListener("click", () => {
-    if (index < slides.length - 1) scrollToIndex(index + 1);
-});
 
+if(index < slides.length - 1){
+index++;
+updateSlide(index);
+}
+
+});
+}
+
+if(prev){
 prev.addEventListener("click", () => {
-    if (index > 0) scrollToIndex(index - 1);
+
+if(index > 0){
+index--;
+updateSlide(index);
+}
+
+});
+}
+
+window.addEventListener("keydown", (e)=>{
+
+if(e.key === "ArrowRight" && index < slides.length - 1){
+index++;
+updateSlide(index);
+}
+
+if(e.key === "ArrowLeft" && index > 0){
+index--;
+updateSlide(index);
+}
+
 });
 
-// navegar con teclas flecha
-window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
-        if (index < slides.length - 1) scrollToIndex(index + 1);
-    } else if (e.key === "ArrowLeft") {
-        if (index > 0) scrollToIndex(index - 1);
-    }
+if(btnEvaluacion){
+btnEvaluacion.addEventListener("click", () => {
+window.location.href = module.evaluacion;
+});
+}
+
+updateSlide(index);
+
 });
 
-// ajustar el índice cuando el usuario hace scroll manual
-container.addEventListener("scroll", () => {
-    const scrolled = container.scrollLeft;
-    const slideWidth = slides[0].offsetWidth;
-    const newIndex = Math.round(scrolled / slideWidth);
-    if (newIndex !== index) updateIndex(newIndex);
 });
-
-// inicialización
-updateIndex(0);

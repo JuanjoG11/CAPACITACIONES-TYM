@@ -1,0 +1,92 @@
+/* Importacion de las variables de entorno */
+@import url(./variables.css);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: var(--main-font);
+    background: #F4F6F9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.sep-modulo{
+    width: 60rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.sep-modulo__header{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* CAROUSEL */
+.sep-carousel{
+    text-align: center;
+}
+
+.sep-carousel__slides{
+    position: relative;
+}
+
+/* SLIDES */
+.sep-slide{
+    display: none;
+}
+
+.sep-slide.active{
+    display: block;
+}
+
+.sep-slide img{
+    width: 100%;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+/* TEXTO DEBAJO DE LA IMAGEN */
+figcaption{
+    font-size: 1rem;
+    color: #444444;
+}
+
+/* CONTROLES */
+.sep-carousel__controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* BOTONES */
+button{
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: #2C7BE5;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled{
+    background: gray;
+    cursor: not-allowed;
+}
+
+/* EVALUACIÓN */
+.sep-evaluacion{
+    margin-top: 2rem;
+    text-align: center;
+}
