@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const modules = [
     {
         prefix: "log",
-        evaluacion: "logistico_evaluacion.html"
+        evaluacion: "logistico_evaluation.html" // nombre real del archivo de evaluación
     },
     {
         prefix: "sep",

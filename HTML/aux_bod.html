@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/aux_bod.css">
+    <title>Induccion Auxiliar de Bodega</title>
+</head>
+<body>
+
+    <main class="bod-modulo">
+        <header class="bod-modulo__header">
+            <h1>Inducción - Auxiliar Bodega</h1>
+            <p>Observa atentamente cada imagen antes de realizar el cuestionario</p>
+        </header>
+
+        <section class="bod-carousel" aria-label="Galeria de inducción">
+            <div class="bod-carousel__slides">
+                <figure class="bod-slide active">
+                    <img src="../IMG/IMG_AUX-BOD/1.jpeg" alt="auxiliar de bodega 1">
+                    <figcaption>Responsabilidades del Cargo</figcaption>
+                </figure>
+
+                <figure class="bod-slide">
+                    <img src="../IMG/IMG_AUX-BOD/2.jpeg" alt="auxiliar de bodega 2">
+                    <figcaption>Responsabilidades, Relaciones y Normas de Seguridad</figcaption>
+                </figure>
+
+                <figure class="bod-slide">
+                    <img src="../IMG/IMG_AUX-BOD/3.jpeg" alt="auxiliar de bodega 3">
+                    <figcaption>Funciones de 1er Nivel</figcaption>
+                </figure>
+                <figure class="bod-slide">
+                    <img src="../IMG/IMG_AUX-BOD/4.jpeg" alt="auxiliar de bodega 4">
+                    <figcaption>Actividades Operativas Diarias</figcaption>
+                </figure>
+            </div>
+
+            <nav class="bod-carousel__controls">
+                <button id="bod-prev" aria-label="Imagen Anterior">
+                    Anterior
+                </button>
+
+                <span id="bod-contador">1 / 9</span>
+
+                <button id="bod-next" aria-label="Imagen Siguiente">
+                    Siguiente
+                </button>
+            </nav>
+        </section>
+
+        <section class="bod-evaluacion">
+            <form id="bod-evalForm">
+                <button id="bod-btnEvaluacion" type="button" disabled>
+                    Iniciar Evaluación
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <script src="aux_log.js"></script>
+    
+</body>
+</html>
