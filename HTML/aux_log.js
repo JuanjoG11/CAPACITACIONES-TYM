@@ -7,7 +7,11 @@ const modules = [
     },
     {
         prefix: "sep",
-        evaluacion: "separacion_evaluacion.html"
+        evaluacion: "separacion_evaluation.html"
+    },
+    {
+        prefix: "bod",
+        evaluacion: "auxbodega_evaluation.html"
     }
 ];
 
