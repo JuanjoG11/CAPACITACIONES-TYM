@@ -1,0 +1,150 @@
+/* Importar variables centralizadas */
+@import url('./variables.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    background: #F4F6F9;
+    color: #1F2937;
+    height: 100vh;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+/* HEADER */
+
+.header-auxbod {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.header-auxbod h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #0B4FA1;
+    margin-bottom: 0.5rem;
+}
+
+.header-auxbod p {
+    font-size: 1rem;
+    color: #6B7280;
+}
+
+/* CONTENERDOR PRINCIPAL */
+
+.container-auxbod {
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+/* CARDS */
+
+.card-auxbod {
+    background: #FFFFFF;
+    border-radius: 0.75rem;
+    padding: 2rem;
+
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+.card-auxbod header {
+    margin-bottom: 1.5rem;
+}
+
+.card-auxbod h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.resultado-total-auxbod {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* RESULTADO GENERAL */
+
+.porcentaje-auxbod {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #0B4FA1;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.descripcion-auxbod {
+    font-size: 1rem;
+    color: #6B7280;
+}
+
+/* GRAFICO CONTAINER */
+
+.grafico-container-auxbod {
+    background: #FFFFFF;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grafico-container-auxbod canvas {
+    width: 100% !important;
+    height: 18rem !important;
+}
+
+figcaption {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+#graficoResultados {
+    max-height: 20rem;
+}
+
+/* FOOTER */
+
+.footer-resultados-auxbod {
+    margin-top: auto;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+/* BOTON */
+
+.boton-volver-auxbod {
+    display: inline-block;
+    text-decoration: none;
+    background: #0B4FA1;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    transition: all 0.25s ease;
+}
+
+.boton-volver-auxbod:hover {
+    transform: translateY(-0.15rem);
+    box-shadow: 0 0.4rem 0.9rem rgba(0, 0, 0, 0.15);
+}
