@@ -8,10 +8,11 @@
 </head>
 <body>
     <img class="body-img" src="../IMG/LOGO6.jpeg">
+
     <main class="main-container"> 
         <article class="card1" onclick="location.href='' ">
             <header class="card_header">
-                <h1> Primer paso seguro </h1>
+                <h1>Primer paso seguro</h1>
                 <figure>
                     <video class="icon-mp4" autoplay muted loop>
                         <source src="../IMG/video2.mp4" type="video/mp4">
@@ -19,16 +20,18 @@
                 </figure>
             </header>
 
-            <p class="desc"> Presione aqui para iniciar con la inducción genérica.</p>
+            <p class="desc">Presione aqui para iniciar con la inducción genérica.</p>
 
             <footer>
-                <a href="home1.html"><button class="btn1">Ingresar</button></a>
+                <a id="link-general" href="home1.html">
+                    <button id="btn-general" class="btn1">Ingresar</button>
+                </a>
             </footer>
         </article>
         
         <article class="card2" onclick="location.href='' ">
             <header class="card_header">
-                <h1> Tu puesto, Tu impacto </h1>
+                <h1>Tu puesto, Tu impacto</h1>
                 <figure>
                     <video class="icon-mp4" autoplay muted loop>
                         <source src="../IMG/VIDEO 1 ALPINA.mp4" type="video/mp4">
@@ -36,12 +39,16 @@
                 </figure>
             </header>
 
-            <p class="desc"> Presione aqui para iniciar con la inducción del cargo.</p>
+            <p class="desc">Presione aqui para iniciar con la inducción del cargo.</p>
 
             <footer>
-                <a href="cards_capacitacion.html"><button class="btn2">Ingresar</button></a>
+                <a id="link-modulo" href="cards_capacitacion.html">
+                    <button id="btn-modulo" class="btn2">Ingresar</button>
+                </a>
             </footer>
         </article>
     </main>
+
+    <script src="../controllers/mode_capacitation.js"></script>
 </body>
 </html>

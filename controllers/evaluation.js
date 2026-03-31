@@ -1,95 +1,119 @@
-/* SCROLL AL FROM */
+import { neon } from 'https://esm.sh/jsr/@neon/serverless'
+
+const DATABASE_URL = 'postgresql://neondb_owner:npg_lZf8U5sRDhWn@ep-misty-waterfall-an5hzirp-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+const sql = neon(DATABASE_URL)
 
 document.getElementById('startBtn')?.addEventListener('click', () => {
     document.getElementById('evalForm')?.scrollIntoView({
-        behavior: 'smooth', 
+        behavior: 'smooth',
         block: 'start'
     });
 });
 
-/* RESPUESTAS CORRECTAS */
+const respuestasCorrectas = window.EvaluationModel?.respuestasCorrectas
 
+const form = document.getElementById("evalForm")
 
-const respuestasCorrectas = window.EvaluationModel?.respuestasCorrectas;
+async function guardarResultadoEnBD(porcentajeTotal, porcentajesModulo) {
+    const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"))
 
-/* SUBMIT FORMULARIO*/
+    if (!usuarioActual || !usuarioActual.id) {
+        throw new Error('No se encontró el usuario actual')
+    }
 
+    const result = await sql`
+        INSERT INTO resultados_evaluacion (
+            usuario_id,
+            porcentaje_total,
+            modulo_1,
+            modulo_2,
+            modulo_3,
+            modulo_4,
+            modulo_5,
+            modulo_6
+        )
+        VALUES (
+            ${usuarioActual.id},
+            ${porcentajeTotal},
+            ${porcentajesModulo[0]},
+            ${porcentajesModulo[1]},
+            ${porcentajesModulo[2]},
+            ${porcentajesModulo[3]},
+            ${porcentajesModulo[4]},
+            ${porcentajesModulo[5]}
+        )
+        RETURNING *
+    `
 
-const form = document.getElementById("evalForm");
+    return result[0]
+}
 
 if (form){
-    form.addEventListener("submit", function(e){
-        e.preventDefault();
+    form.addEventListener("submit", async function(e){
+        e.preventDefault()
 
-        const formData = new FormData(this);
+        const formData = new FormData(this)
 
-        let resultadosModulo = [0,0,0,0,0,0];
-        let totalCorrectas = 0;
+        let resultadosModulo = [0,0,0,0,0,0]
+        let totalCorrectas = 0
 
         if (!respuestasCorrectas || Object.keys(respuestasCorrectas).length === 0) {
-            alert("Error: no se cargaron las respuestas correctas (EvaluationModel).");
-            return;
+            alert("Error: no se cargaron las respuestas correctas (EvaluationModel).")
+            return
         }
 
         for(let pregunta in respuestasCorrectas) {
-            const respuestaUsuario = formData.get(pregunta);
+            const respuestaUsuario = formData.get(pregunta)
 
             if(!respuestaUsuario) {
-                alert("Debes responder todas las preguntas.");
-                return;
+                alert("Debes responder todas las preguntas.")
+                return
             }
 
             if (respuestaUsuario === respuestasCorrectas[pregunta]) {
-                totalCorrectas++;
+                totalCorrectas++
 
-                const numeroPregunta = parseInt(pregunta.replace("q", ""));
-                const indiceModulo = Math.floor((numeroPregunta - 1)/ 3);
+                const numeroPregunta = parseInt(pregunta.replace("q", ""))
+                const indiceModulo = Math.floor((numeroPregunta - 1)/ 3)
 
-                resultadosModulo[indiceModulo]++;
+                resultadosModulo[indiceModulo]++
             }
         }
 
-        /* PORCENTAJE POR MODULO */
-
-        const porcentajesModulo = resultadosModulo.map(correctas => 
+        const porcentajesModulo = resultadosModulo.map(correctas =>
             Math.round((correctas/3)*100)
-        );
+        )
 
-        /* PORCENTAJE TOTAL */
-        
-        const porcentajeTotal = Math.round((totalCorrectas / 18) * 100);
+        const porcentajeTotal = Math.round((totalCorrectas / 18) * 100)
 
-        /* GUARDA RESULTADOS */
+        localStorage.setItem("porcentajeTotal", porcentajeTotal)
+        localStorage.setItem("porcentajesModulo", JSON.stringify(porcentajesModulo))
 
-        localStorage.setItem("porcentajeTotal", porcentajeTotal);
-        localStorage.setItem("porcentajesModulo", JSON.stringify(porcentajesModulo));
-
-        /* IR AL RESULTADO */
-
-        window.location.href = "resultado1.html";
-
-    });
+        try {
+            await guardarResultadoEnBD(porcentajeTotal, porcentajesModulo)
+            window.location.href = "resultado1.html"
+        } catch (error) {
+            console.error(error)
+            alert("No se pudo guardar el resultado en la base de datos")
+        }
+    })
 }
 
-/* GRAFICO */
-
-let chartInstance = null;
+let chartInstance = null
 
 function generarGrafico(datos) {
+    const canvas = document.getElementById("graficoResultados")
 
-    const canvas = document.getElementById("graficoResultados");
+    if (!canvas) return
 
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d")
 
     if(chartInstance){
-        chartInstance.destroy();
+        chartInstance.destroy()
     }
 
     chartInstance = new Chart(ctx,{
         type: "bar",
-
         data:{
             labels:[
                 "SST",
@@ -99,14 +123,11 @@ function generarGrafico(datos) {
                 "CCL",
                 "COPASST"
             ],
-
             datasets:[{
-
                 data: datos,
-
                 backgroundColor: function(context){
-                    const chart = context.chart;
-                    const {ctx, chartArea} = chart;
+                    const chart = context.chart
+                    const {ctx, chartArea} = chart
 
                     if (!chartArea) {
                         return [
@@ -116,7 +137,7 @@ function generarGrafico(datos) {
                             "#D32F2F",
                             "#2E7D32",
                             "#072146"
-                        ][context.dataIndex];
+                        ][context.dataIndex]
                     }
 
                     const gradientes = [
@@ -126,83 +147,66 @@ function generarGrafico(datos) {
                         crearGradiente(ctx, chartArea, "#D32F2F", "#EF5350"),
                         crearGradiente(ctx, chartArea, "#2E7D32", "#66BB6A"),
                         crearGradiente(ctx, chartArea, "#072146", "#1A3D7C")
-                    ];
+                    ]
 
-                    return gradientes[context.dataIndex];
+                    return gradientes[context.dataIndex]
                 },
-
                 borderRadius: 8,
                 barThickness: 50
             }]
         },
-
         options: {
             responsive: true,
-
             plugins:{
                 legend:{
                     display:false
                 }
             },
-
             tooltip: {
                 callbacks: {
                     label: (context) => context.raw + "%"
                 }
             },
-
             scales: {
                 x: {
                     grid: {
                         display: false
                     }
                 },
-
                 y: {
                     beginAtZero: true,
                     max: 100,
-
                     ticks: {
                         callback: (value) => value + "%"
                     }
                 }
             }
         },
-
-
-    });
-}    
+    })
+}
 
 function crearGradiente(ctx, chartArea, color1, color2){
-                    const gradient = ctx.createLinearGradient(
-                        0,
-                        chartArea.bottom,
-                        0,
-                        chartArea.top
-                    );
+    const gradient = ctx.createLinearGradient(
+        0,
+        chartArea.bottom,
+        0,
+        chartArea.top
+    )
 
-                    gradient.addColorStop(0, color1);
-                    gradient.addColorStop(1, color2);
+    gradient.addColorStop(0, color1)
+    gradient.addColorStop(1, color2)
 
-                    return gradient;
-                }
-
-/* RESULTADOS */
+    return gradient
+}
 
 if (document.getElementById("graficoResultados")) {
-
-    const porcentajeTotal = localStorage.getItem("porcentajeTotal");
-
-    const porcentajesModulo = JSON.parse(localStorage.getItem("porcentajesModulo"));
-
-
-
-    const porcentajeEl = document.getElementById("porcentajeFinal");
+    const porcentajeTotal = localStorage.getItem("porcentajeTotal")
+    const porcentajesModulo = JSON.parse(localStorage.getItem("porcentajesModulo"))
+    const porcentajeEl = document.getElementById("porcentajeFinal")
 
     if(porcentajeEl) {
-
-        porcentajeEl.innerText = porcentajeTotal + "%";
+        porcentajeEl.innerText = porcentajeTotal + "%"
     }
 
-    generarGrafico(porcentajesModulo);
-    }
+    generarGrafico(porcentajesModulo)
+}

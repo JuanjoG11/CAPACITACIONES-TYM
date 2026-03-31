@@ -33,17 +33,21 @@ html, body{
     border: 0;
     padding: 0;
     color: var(--gray-950 );
+    overflow: hidden;
 }
 
 .modulo {
-    max-width: var(--container-max);
-    margin: 2rem auto;
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: 1.8rem;
-    box-shadow: var(--shadow-1);
-    border-left: 0.9rem solid var(--accent, #E5E7EB);
-    transition: transform .12s ease, box-shadow .12s ease;
+  flex: 0 0 100%;
+  width: 100%;
+  min-height: auto;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  margin: 0;
+  max-width: 100%;
+  padding: 0.9rem 2rem;
+  box-sizing: border-box;
 }
 
 .modulos-carousel {
@@ -370,6 +374,9 @@ legend {
 }
 
 @media (max-width: 1200px) {
+    html, body{
+        overflow: auto;
+    }
     .modulo {
         grid-template-columns: repeat(2, 1fr);
     }
