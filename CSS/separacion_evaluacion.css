@@ -17,13 +17,13 @@ body{
     align-items: flex-start;
 
     overflow: hidden;
-    padding: 1rem 0 2rem;
+    padding: 4rem 0 2rem;
     font-size: 0.9rem;
 }
 
 /* CONTENEDOR PRINCIPAL */
 .sep-evaluacion{
-    width: min(85rem, 92%);
+    width: 90%;
     background: var(--gray-50);
     padding: 1.2rem;
 

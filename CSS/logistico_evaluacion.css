@@ -17,13 +17,14 @@ body{
     align-items: flex-start;
 
     overflow: hidden;
-    padding: 0.2rem 0 0.2rem;
+    padding: 4rem 0 0.2rem;
     font-size: 0.9rem;
 }
 
 /* CONTENEDOR PRINCIPAL */
 .log-evaluacion{
-    width: min(85rem, 92%);
+    width: 90%;
+    align-items: center;
     background: var(--gray-50);
     padding: 1.2rem;
 
