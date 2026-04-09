@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "/views/index.html", "permanent": true }
+  ]
+}
