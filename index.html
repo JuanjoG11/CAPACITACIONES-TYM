@@ -1,74 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Capacitaciones - Distribuidora Del Eje</title>
-    <!-- Usamos los mismos estilos del proyecto para coherencia -->
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/variables.css">
-    <style>
-        .portal-main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
-            text-align: center;
-        }
-        .welcome-container {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 2rem;
-            box-shadow: var(--shadow-lg);
-            max-width: 600px;
-            width: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .main-logo {
-            width: 180px;
-            margin-bottom: 2rem;
-        }
-        .start-btn {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1.5rem 3rem;
-            background: var(--primary1-100);
-            color: white;
-            text-decoration: none;
-            border-radius: 1rem;
-            font-size: 1.8rem;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 158, 226, 0.3);
-        }
-        .start-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 158, 226, 0.5);
-            background: var(--primary1-950);
-        }
-        .footer-text {
-            margin-top: 2rem;
-            color: var(--gray-600);
-            font-size: 1.4rem;
-        }
-    </style>
+    <title>Distribuidora Del Eje</title>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
-<body class="portal-main">
-    <div class="welcome-container">
-        <h1 class="principal_title" style="margin-top: 0;">Centro de Capacitación Eje</h1>
-        <p class="desc" style="font-size: 1.8rem;">Bienvenido al sistema de formación y evaluación de Distribuidora Del Eje Cafetero.</p>
-        
-        <div style="display: flex; justify-content: center; gap: 2rem; margin: 3rem 0;">
-             <img src="./IMG/TAT-logo_RGB-10.png" alt="TAT" style="height: 60px;">
-             <img src="./IMG/Logo tiendas.png" alt="TYM" style="height: 60px;">
-        </div>
+<body>
+    <h1 class="principal_title">Bienvenido! Ingresa tu razón social para continuar</h1>
+    
+    <section class="card-container">
+        <!-- CARD TAT -->
+        <article class="card" onclick="location.href='login.html?area=tat'">
+            <header class="card-header"> 
+                <h1 class="tittle">TAT</h1>
+                <figure>
+                    <img class="icon-img" src="IMG/TAT-logo_RGB-10.png">
+                </figure>
+            </header>
 
-        <a href="./views/index.html" class="start-btn">Comenzar Capacitación</a>
-        
-        <p class="footer-text">© 2026 Distribuidora Del Eje - Talento Humano</p>
-    </div>
+            <p class="desc"> Presione aqui para TAT Distribuciones del Eje Cafetero</p>
+
+            <footer>
+                <button class="btn" onclick="location.href='login.html?area=tat'">Ingresar</button>
+            </footer>
+        </article>
+
+        <!-- CARD TYM -->
+        <article class="card" onclick="location.href='login.html?area=tym'">
+            <header class="card-header">
+                <h1 class="tittle">TYM</h1>
+                <figure>
+                    <img class="icon-img" src="IMG/Logo tiendas.png" alt="TYM">
+                </figure>
+            </header> 
+
+            <p class="desc">Presione aqui para Tiendas y Marcas del Eje Cafetero</p>
+
+            <footer>
+                <button class="btn" onclick="location.href='login.html?area=tym'">Ingresar</button>
+            </footer>
+        </article>
+    </section>
+    
 </body>
 </html>

@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado Jefe de Bodega</title>
+    <title>Resultado Auxiliar de Bodega</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <link rel="stylesheet" href="../CSS/result_jefe_bod.css">
+    <link rel="stylesheet" href="CSS/result_aux_bod.css">
 </head>
 <body>
-    <header class="header-jefebod">
+    <header class="header-auxbod">
         <h1>Resultados de la Evaluación</h1>
-        <p>Lider de Bodega</p>
+        <p>Auxiliar de Bodega</p>
     </header>
 
-    <main class="container-jefebod">
-        <section class="card-jefebod" aria-labelledby="resumen-titulo">
+    <main class="container-auxbod">
+        <section class="card-auxbod" aria-labelledby="resumen-titulo">
             <header>
-                <h2 id="resumen-jefebod" class="resumen-jefebod">Resultado General De</h2>
+                <h2 id="resumen-auxbod" class="resumen-auxbod">Resultado General De</h2>
                 <h2 id="nombreUsuario" class="nombre-usuario"></h2>
             </header>
 
-            <article class="resultado-total-jefebod">
-                <p id="porcentajeFinal-jefebod" class="porcentaje-jefebod">0%</p>
-                <p class="descripcion-jefebod">Resultado Total Obtenido</p>
-                <p id="detalleTexto-jefebod" class="descripcion-jefebod">0 de 0 respuestas correctas</p>
+            <article class="resultado-total-auxbod">
+                <p id="porcentajeFinal-auxbod" class="porcentaje-auxbod">0%</p>
+                <p class="descripcion-auxbod">Resultado Total Obtenido</p>
+                <p id="detalleTexto-auxbod" class="descripcion-auxbod">0 de 0 respuestas correctas</p>
             </article>
         </section>
 
@@ -36,7 +36,7 @@
                 <h2 id="grafico-container">Desempeño por Módulo</h2>
             </header>
 
-            <figure class="grafico-container-jefebod">
+            <figure class="grafico-container-auxbod">
                 <canvas id="graficoResultados"></canvas>
                 <figcaption>
                     Porcentaje obtenido en la evaluación.
@@ -45,14 +45,14 @@
         </section>
     </main>
 
-    <footer class="footer-resultados-jefebod">
+    <footer class="footer-resultados-auxbod">
         <nav>
-            <a href="mode_capacitation.html" class="boton-volver-jefebod">
+            <a href="mode_capacitation.html" class="boton-volver-auxbod">
                 Volver al inicio
             </a>
         </nav>
     </footer>
 
-    <script type="module" src="../controllers/evaluacionmodulos.js"></script>
+    <script type="module" src="controllers/evaluacionmodulos.js"></script>
 </body>
 </html>
