@@ -188,7 +188,7 @@ window.imprimirReporteIndividual = function(id, tipo) {
 
         <div class="footer-signatures" style="margin-top: 100px;">
             <div class="sig-line">Firma del Trabajador<br><small>C.C. ${res.usuario_cedula}</small></div>
-            <div class="sig-line">Responsable SST / Operaciones</div>
+            <div class="sig-line">Responsable SST</div>
         </div>
     `;
 
