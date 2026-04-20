@@ -12,29 +12,21 @@
 
 html {
     font-size: 62.5%;
-    height: 100%;
-    overflow: hidden;
-    scrollbar-width: none;
+    min-height: 100%;
+    overflow-y: auto; /* Permitir scroll vertical */
 }
 
 body {
     font-family: 'Poppins', var(--main-font);
-    height: 100vh;
+    min-height: 100vh; /* Cambiado de height a min-height */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(-45deg,
-        #1a5276,
-        #2c3e50,
-        #e67e22,
-        #2c3e50,
-        #2980b9
-    );
-    background-size: 400% 400%;
-    animation: gradientShift 12s ease infinite;
+    background: radial-gradient(circle at center, #1a2a3a 0%, #0f172a 100%); /* Fondo más oscuro y profundo */
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    padding: 4rem 1rem;
 }
 
 /* ── Partículas decorativas de fondo ── */
@@ -122,16 +114,12 @@ body::after {
     cursor: pointer;
     overflow: hidden;
 
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.15);
-    box-shadow:
-        0 8px 32px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.1);
-    transition: transform 0.35s cubic-bezier(0.175,0.885,0.32,1.275),
-                box-shadow 0.35s ease,
-                background 0.35s ease;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Borde casi invisible */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
 }
 
 /* Brillo superior animado */
