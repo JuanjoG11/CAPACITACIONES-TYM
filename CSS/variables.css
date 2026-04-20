@@ -5,30 +5,30 @@
 :root {
     /* ===== COLORES PRIMARIOS ===== */
     
-    /* Azul primario TYM */
-    --primary1-950: #1a5276;
-    --primary1-900: #1f618d;
-    --primary1-800: #2471a3;
-    --primary1-700: #2980b9;
-    --primary1-600: #2e86c1;
-    --primary1-500: #3498db;
-    --primary1-400: #5dade2;
-    --primary1-300: #85c1e9;
-    --primary1-200: #aed6f1;
-    --primary1-100: #d6eaf8;
+    /* Azul primario TYM - Más PROFUNDO y ELEGANTE */
+    --primary1-950: #0f2a3d;
+    --primary1-900: #143d59;
+    --primary1-800: #1a5276;
+    --primary1-700: #21618c;
+    --primary1-600: #2874a6;
+    --primary1-500: #2e86c1;
+    --primary1-400: #5499c7;
+    --primary1-300: #7fb3d5;
+    --primary1-200: #a9cce3;
+    --primary1-100: #d4e6f1;
 
-    /* Naranja acento TYM */
-    --primary2-950: #922b21;
-    --primary2-900: #a93226;
-    --primary2-800: #c0392b;
-    --primary2-700: #d35400;
-    --primary2-600: #e67e22;
+    /* Naranja acento TYM - REDUCIDO Y SOFISTICADO (Ambar/Bronce) */
+    --primary2-950: #6e2c00;
+    --primary2-900: #873600;
+    --primary2-800: #a04000;
+    --primary2-700: #ba4a00;
+    --primary2-600: #d35400; /* Naranja base más oscuro y legible */
     --primary2-500: #e67e22;
-    --primary2-400: #eb9041;
-    --primary2-300: #f0a459;
-    --primary2-200: #f5b97b;
-    --primary2-100: #fad7a0;
-    --primary2-50:  #fdebd0;
+    --primary2-400: #edbb99;
+    --primary2-300: #f5cba7;
+    --primary2-200: #fadbd8;
+    --primary2-100: #fdf2e9;
+    --primary2-50:  #fef9f5;
 
     /* ===== COLORES SECUNDARIOS ===== */
     

@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "jefe_bod.html": "jefe_evaluation.html"
     };
 
-    const currentPage = window.location.pathname.split("/").pop();
-    const targetEval = urlEvalMap[currentPage] || "cards_capacitacion.html";
+    const currentPage = window.location.pathname.split("/").pop() || "aux_log.html";
+    const targetEval = urlEvalMap[currentPage] || "logistico_evaluation.html"; // Default robusto para aux_log
 
     const slides = document.querySelectorAll(`.ind-slide`);
     const nextBtn = document.getElementById(`ind-next`);

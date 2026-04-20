@@ -4,37 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresar | Capacitaciones TYM &amp; TAT</title>
+    <!-- Google Fonts: Poppins & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CSS/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/login.css?v=3">
 </head>
 <body>
+    
     <!-- LOGIN TAT -->
     <form id="login-tat" class="login-form">
         <figure>
-            <img class="logo-tat" src="IMG/TAT-logo_RGB-10.png">
+            <img class="logo-tat" src="IMG/TAT-logo_RGB-10.png" alt="Logo TAT">
         </figure>
         <fieldset class="login-fieldset">
-            <legend class="login-legend">Login TAT</legend>
+            <legend class="login-legend">Inducción TAT</legend>
 
-            <label for="nombre1" class="login-label">Nombre Completo: </label>
-            <input type="text" id="nombre1" class="login-input" placeholder="Ingrese su Nombre Completo">
+            <label for="nombre1" class="login-label">Nombre Completo</label>
+            <input type="text" id="nombre1" class="login-input" placeholder="Ej: Juan Pérez">
 
-            <label for="tipo_doc1" class="login-label">Tipo de Documento: </label>
+            <label for="tipo_doc1" class="login-label">Tipo de Documento</label>
             <select id="tipo_doc1" class="login-select">
                 <option value="">Seleccione...</option>
                 <option value="CC">Cédula de Ciudadanía</option>
                 <option value="TI">Tarjeta de Identidad</option>
-                <option value="CE">Cédula de Extranjería...</option>
+                <option value="CE">Cédula de Extranjería</option>
             </select>
 
-            <label for="num_doc1" class="login-label">Número de Documento: </label>
-            <input type="text" id="num_doc1" class="login-input" placeholder="Ingrese su Número de Documento" inputmode="numeric">
+            <label for="num_doc1" class="login-label">Número de Documento</label>
+            <input type="text" id="num_doc1" class="login-input" placeholder="Sin puntos ni comas" inputmode="numeric">
 
-            <label for="cargo1" class="login-label">Cargo: </label>
+            <label for="cargo1" class="login-label">Cargo</label>
             <select id="cargo1" class="login-select">
-                <option value="">Seleccione...</option>
+                <option value="">Seleccione su cargo...</option>
                 <option value="aux_log">Auxiliar Logístico</option>
                 <option value="aux_sep">Auxiliar de Separación</option>
                 <option value="aux_bod">Auxiliar de Bodega</option>
@@ -47,18 +49,18 @@
         </fieldset>
     </form>
 
-    <!-- LOGIN TYM  -->
+    <!-- LOGIN TYM -->
      <form id="login-tym" class="login-form">
         <figure>
-            <img class="logo-tym" src="IMG/tym-img.jpg">
+            <img class="logo-tym" src="IMG/tym-img.jpg" alt="Logo TYM">
         </figure>
         <fieldset class="login-fieldset">
-            <legend class="login-legend">Login TYM </legend>
+            <legend class="login-legend">Inducción TYM</legend>
 
-            <label for="nombre2" class="login-label"> Nombre Completo: </label>
-            <input type="text" id="nombre2" class="login-input" placeholder="Ingrese su Nombre Completo">
+            <label for="nombre2" class="login-label">Nombre Completo</label>
+            <input type="text" id="nombre2" class="login-input" placeholder="Ej: María López">
 
-            <label for="tipo_doc2" class="login-label">Tipo de Documento: </label>
+            <label for="tipo_doc2" class="login-label">Tipo de Documento</label>
             <select id="tipo_doc2" class="login-select">
                 <option value="">Seleccione...</option>
                 <option value="CC">Cédula de Ciudadanía</option>
@@ -66,12 +68,12 @@
                 <option value="CE">Cédula de Extranjería</option>
             </select>
 
-            <label for="num_doc2" class="login-label"> Número de Documento: </label>
-            <input type="text" id="num_doc2" class="login-input" placeholder="Ingrese su Número de Documento" inputmode="numeric">
+            <label for="num_doc2" class="login-label">Número de Documento</label>
+            <input type="text" id="num_doc2" class="login-input" placeholder="Sin puntos ni comas" inputmode="numeric">
 
-            <label for="cargo2" class="login-label">Cargo: </label>
+            <label for="cargo2" class="login-label">Cargo</label>
             <select id="cargo2" class="login-select">
-                <option value="">Seleccione...</option>
+                <option value="">Seleccione su cargo...</option>
                 <option value="aux_log">Auxiliar Logístico</option>
                 <option value="aux_sep">Auxiliar de Separación</option>
                 <option value="aux_bod">Auxiliar de Bodega</option>
@@ -79,26 +81,28 @@
             </select>
 
             <footer>
-                <button class="login-button"> Iniciar Sesión</button>
+                <button class="login-button">Iniciar Sesión</button>
             </footer>
         </fieldset>
     </form>
 
 <script>
-    // Lógica simple que funciona siempre (incluso sin servidor)
     (function() {
         const area = (new URLSearchParams(window.location.search).get('area') || '').toLowerCase().trim();
         const fTat = document.getElementById('login-tat');
         const fTym = document.getElementById('login-tym');
         if (area === 'tat') {
-            if (fTym) fTym.style.display = 'none';
-            if (fTat) fTat.style.display = 'flex';
+            if (fTym) fTym.remove();
+            if (fTat) fTat.classList.add('active');
         } else if (area === 'tym') {
-            if (fTat) fTat.style.display = 'none';
-            if (fTym) fTym.style.display = 'flex';
+            if (fTat) fTat.remove();
+            if (fTym) fTym.classList.add('active');
+        } else {
+            if (fTat) fTat.classList.add('active');
+            if (fTym) fTym.classList.add('active');
         }
     })();
 </script>
-<script type="module" src="controllers/login.js"></script>
+<script type="module" src="controllers/login.js?v=3"></script>
 </body>
 </html>
