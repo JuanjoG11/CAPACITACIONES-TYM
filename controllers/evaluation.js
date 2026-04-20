@@ -16,7 +16,10 @@ const form = document.getElementById("evalForm")
 
 async function guardarResultadoEnBD(porcentajeTotal, porcentajesModulo) {
     const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"))
-    const empresa = localStorage.getItem('empresaSeleccionada') || 'TYM';
+    // Prioridad 1: El área grabada en el perfil del usuario.
+    // Prioridad 2: El almacenamiento temporal.
+    // Prioridad 3: TYM por defecto.
+    const empresa = (usuarioActual?.area || localStorage.getItem('empresaSeleccionada') || 'TYM').toUpperCase();
 
     if (!usuarioActual || !usuarioActual.id) {
         throw new Error('No se encontró el usuario actual')

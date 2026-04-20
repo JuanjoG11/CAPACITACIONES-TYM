@@ -88,7 +88,9 @@ function esPaginaEvaluacion() {
 
 async function guardarResultadoModulo(data) {
   const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual'))
-  const seleccionEmpresa = localStorage.getItem('empresaSeleccionada') || 'TYM'; // Valor por defecto
+  // Prioridad 1: El área grabada en el perfil del usuario.
+  // Prioridad 2: El almacenamiento temporal.
+  const seleccionEmpresa = (usuarioActual?.area || localStorage.getItem('empresaSeleccionada') || 'TYM').toUpperCase();
 
   if (!usuarioActual || !usuarioActual.id) {
     throw new Error('No se encontró el usuario actual')

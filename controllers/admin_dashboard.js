@@ -169,7 +169,7 @@ window.imprimirReporteIndividual = function(id, tipo) {
             <img src="${logoEmpresa}" class="logo-report">
         </div>
 
-        <div class="report-title">Acta de Evaluación ${tipo}: ${res.eval_nombre}</div>
+        <div class="report-title">Resultados de Evaluación ${tipo}: ${res.eval_nombre}</div>
 
         <div class="report-grid">
             <div class="info-item"><strong>Empresa:</strong><br>${res.empresa || 'TYM'}</div>
@@ -188,7 +188,7 @@ window.imprimirReporteIndividual = function(id, tipo) {
 
         <div class="footer-signatures" style="margin-top: 100px;">
             <div class="sig-line">Firma del Trabajador<br><small>C.C. ${res.usuario_cedula}</small></div>
-            <div class="sig-line">Responsable SST / Operaciones<br><small>Sello o Huella</small></div>
+            <div class="sig-line">Responsable SST / Operaciones</div>
         </div>
     `;
 

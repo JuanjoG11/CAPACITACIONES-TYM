@@ -15,9 +15,10 @@ import { neon } from 'https://esm.sh/@neondatabase/serverless'
   onReady(function () {
     try {
       const params = new URLSearchParams(location.search)
-      const areaParam = params.get('area')
-      if (areaParam) {
-          localStorage.setItem('empresaSeleccionada', areaParam.toUpperCase().trim());
+      const area = (params.get('area') || '').toLowerCase().trim()
+      
+      if (area) {
+          localStorage.setItem('empresaSeleccionada', area.toUpperCase());
       }
       
       const formTat = document.getElementById('login-tat')
@@ -35,12 +36,12 @@ import { neon } from 'https://esm.sh/@neondatabase/serverless'
 
       if (area === 'tat' && formTat) {
         formTat.classList.add('active')
-        formTat.style.display = 'flex' // Forzamos mostrar
+        formTat.style.display = 'flex'
       } else if (area === 'tym' && formTym) {
         formTym.classList.add('active')
-        formTym.style.display = 'flex' // Forzamos mostrar
+        formTym.style.display = 'flex'
       } else {
-        // Fallback: si no hay área, mostramos ambos por si acaso
+        // Por si acaso, mostramos ambos si no hay parámetro
         if (formTat) formTat.style.display = 'flex';
         if (formTym) formTym.style.display = 'flex';
       }
