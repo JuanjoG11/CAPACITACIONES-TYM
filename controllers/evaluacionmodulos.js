@@ -88,11 +88,13 @@ function esPaginaEvaluacion() {
 
 async function guardarResultadoModulo(data) {
   const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual'))
+  const seleccionEmpresa = localStorage.getItem('empresaSeleccionada') || 'TYM'; // Valor por defecto
 
   if (!usuarioActual || !usuarioActual.id) {
     throw new Error('No se encontró el usuario actual')
   }
 
+  // Insertamos incluyendo la marca de la empresa
   const result = await sql`
     INSERT INTO resultados_modulo_especifico (
       usuario_id,
@@ -102,7 +104,9 @@ async function guardarResultadoModulo(data) {
       total_preguntas,
       respuestas_usuario,
       respuestas_correctas,
-      detalle_resultado
+      detalle_resultado,
+      empresa,
+      tipo_evaluacion
     )
     VALUES (
       ${usuarioActual.id},
@@ -112,7 +116,9 @@ async function guardarResultadoModulo(data) {
       ${data.totalPreguntas},
       ${JSON.stringify(data.respuestasUsuario)},
       ${JSON.stringify(data.respuestasCorrectas)},
-      ${JSON.stringify(data.detalleResultado)}
+      ${JSON.stringify(data.detalleResultado)},
+      ${seleccionEmpresa.toUpperCase()},
+      'CARGO'
     )
     RETURNING *
   `

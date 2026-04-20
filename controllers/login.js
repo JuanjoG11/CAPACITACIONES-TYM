@@ -15,7 +15,10 @@ import { neon } from 'https://esm.sh/@neondatabase/serverless'
   onReady(function () {
     try {
       const params = new URLSearchParams(location.search)
-      const area = (params.get('area') || '').toLowerCase().trim()
+      const areaParam = params.get('area')
+      if (areaParam) {
+          localStorage.setItem('empresaSeleccionada', areaParam.toUpperCase().trim());
+      }
       
       const formTat = document.getElementById('login-tat')
       const formTym = document.getElementById('login-tym')

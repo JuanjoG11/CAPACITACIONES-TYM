@@ -46,13 +46,32 @@ async function cargarResultados() {
     try {
         const resultados = await sql`
             SELECT 
-                r.*,
-                u.nombre as usuario_nombre,
-                u.num_doc as usuario_cedula,
-                u.cargo as usuario_cargo
+                r.id, r.usuario_id, r.modulo_nombre as eval_nombre, 
+                r.porcentaje_total, r.total_correctas, r.total_preguntas, 
+                r.detalle_resultado::text, r.created_at, r.empresa, r.tipo_evaluacion,
+                u.nombre as usuario_nombre, u.num_doc as usuario_cedula, u.cargo as usuario_cargo
             FROM resultados_modulo_especifico r
             JOIN usuarios u ON r.usuario_id = u.id
-            ORDER BY r.created_at DESC
+            
+            UNION ALL
+            
+            SELECT 
+                s.id, s.usuario_id, 'Seguridad y Salud (SST)' as eval_nombre,
+                s.porcentaje_total, 0 as total_correctas, 18 as total_preguntas,
+                json_build_object(
+                    'SST General', s.modulo_1, 
+                    'Accidentes', s.modulo_2, 
+                    'PESV', s.modulo_3, 
+                    'Brigada de Emergencia', s.modulo_4, 
+                    'CCL (Convivencia)', s.modulo_5, 
+                    'COPASST', s.modulo_6
+                )::text as detalle_resultado, 
+                s.created_at, s.empresa, s.tipo_evaluacion,
+                u.nombre as usuario_nombre, u.num_doc as usuario_cedula, u.cargo as usuario_cargo
+            FROM resultados_evaluacion s
+            JOIN usuarios u ON s.usuario_id = u.id
+            
+            ORDER BY created_at DESC
         `;
 
         todosLosResultados = resultados;
@@ -62,14 +81,21 @@ async function cargarResultados() {
             const term = e.target.value.toLowerCase();
             const filtrados = resultados.filter(r => 
                 r.usuario_nombre.toLowerCase().includes(term) || 
-                r.usuario_cedula.toLowerCase().includes(term)
+                r.usuario_cedula.toLowerCase().includes(term) ||
+                (r.empresa && r.empresa.toLowerCase().includes(term))
             );
             renderTable(filtrados);
         });
 
     } catch (error) {
-        console.error('Error cargando datos:', error);
-        tableBody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: #ff4d4d; padding: 2rem;">Error de base de datos.</td></tr>`;
+        console.error('Error detallado:', error);
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="8" style="text-align: center; color: #ff4d4d; padding: 2rem;">
+                    <strong>Error de Memoria/Tablas:</strong> ${error.message}<br>
+                    <small>Por favor, ejecuta <strong>setup_database.html</strong> para actualizar la estructura.</small>
+                </td>
+            </tr>`;
     }
 }
 
@@ -80,135 +106,93 @@ function renderTable(data) {
     data.forEach(res => {
         const fecha = new Date(res.created_at).toLocaleDateString();
         const aprobado = res.porcentaje_total >= 75;
+        const colorEmpresa = res.empresa === 'TAT' ? '#3498db' : '#e67e22';
         
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td>${fecha}</td>
+            <td><strong style="color: ${colorEmpresa}">${res.empresa || 'TYM'}</strong></td>
             <td style="font-weight: 600;">${res.usuario_nombre}</td>
             <td>${res.usuario_cedula}</td>
-            <td>${res.modulo_nombre}</td>
-            <td><strong>${res.total_correctas} / ${res.total_preguntas}</strong> (${res.porcentaje_total}%)</td>
+            <td><span style="font-size: 1.1rem; opacity: 0.7;">[${res.tipo_evaluacion}]</span> ${res.eval_nombre}</td>
+            <td><strong>${res.porcentaje_total}%</strong></td>
             <td>
                 <span class="badge ${aprobado ? 'badge-success' : 'badge-danger'}">
                     ${aprobado ? 'APROBADO' : ' REPROBADO'}
                 </span>
             </td>
             <td>
-                <button class="btn-print" onclick="imprimirReporteIndividual('${res.id}')">🖨️ Imprimir Acta</button>
+                <button class="btn-print" onclick="imprimirReporteIndividual('${res.id}', '${res.tipo_evaluacion}')">🖨️ Acta</button>
             </td>
         `;
         tableBody.appendChild(tr);
     });
 }
 
-window.imprimirReporteIndividual = function(id) {
-    console.log('Generando reporte para ID:', id);
-    const res = todosLosResultados.find(r => r.id == id);
-    if (!res) {
-        console.error('Resultado no encontrado');
-        return;
-    }
+window.imprimirReporteIndividual = function(id, tipo) {
+    const res = todosLosResultados.find(r => r.id == id && r.tipo_evaluacion == tipo);
+    if (!res) return;
 
     const printArea = document.getElementById('printArea');
+    const detalle = (typeof res.detalle_resultado === 'string') ? JSON.parse(res.detalle_resultado || '{}') : (res.detalle_resultado || {});
+    const logoEmpresa = res.empresa === 'TAT' ? 'IMG/TAT-logo_RGB-10.png' : 'IMG/Logo tiendas.png';
     
-    // ARREGLO CRÍTICO: Detectar si ya es un objeto o viene como texto
-    let detalle = [];
-    try {
-        detalle = typeof res.detalle_resultado === 'string' 
-            ? JSON.parse(res.detalle_resultado) 
-            : res.detalle_resultado;
-        
-        if (!Array.isArray(detalle)) detalle = [];
-    } catch (e) {
-        console.error('Error procesando detalle:', e);
-        detalle = [];
+    let rowsHTML = '';
+    if (tipo === 'CARGO') {
+        const preguntasTexto = PREGUNTAS_MODULOS[res.eval_nombre] || [];
+        detalle.forEach((det, i) => {
+            rowsHTML += `<tr><td>${i+1}</td><td>${preguntasTexto[i] || 'Pregunta de evaluación'}</td><td>${det.respuestaUsuario}</td><td>${det.respuestaCorrecta}</td><td>${det.esCorrecta ? '✅' : '❌'}</td></tr>`;
+        });
+    } else {
+        // Reporte para SST mostrando los 6 módulos
+        Object.keys(detalle).forEach((modulo, i) => {
+            const nota = detalle[modulo];
+            rowsHTML += `
+                <tr>
+                    <td>${i+1}</td>
+                    <td>Módulo: <strong>${modulo}</strong></td>
+                    <td colspan="2">Puntaje Obtenido: ${nota}%</td>
+                    <td>${nota >= 75 ? '✅' : '❌'}</td>
+                </tr>
+            `;
+        });
     }
 
-    const preguntasTexto = PREGUNTAS_MODULOS[res.modulo_nombre] || [];
     const fechaExtensa = new Date(res.created_at).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-    let rowsHTML = '';
-    detalle.forEach((det, i) => {
-        const textoPregunta = preguntasTexto[i] || `Pregunta ${i + 1}`;
-        rowsHTML += `
-            <tr>
-                <td>${i + 1}</td>
-                <td><strong>${textoPregunta}</strong></td>
-                <td>Rpta: ${det.respuestaUsuario || 'N/A'}</td>
-                <td>Correcta: ${det.respuestaCorrecta || 'N/A'}</td>
-                <td class="${det.esCorrecta ? 'status-ok' : 'status-err'}">
-                    ${det.esCorrecta ? 'ACERTÓ ✅' : 'FALLÓ ❌'}
-                </td>
-            </tr>
-        `;
-    });
 
     printArea.innerHTML = `
         <div class="report-header">
             <div class="company-info">
-                <h2>TIENDAS Y MARCAS EJE CAFETERO</h2>
+                <h2 style="color: ${res.empresa === 'TAT' ? '#0B4FA1' : '#e67e22'}">${res.empresa === 'TAT' ? 'TAT DISTRIBUCIONES' : 'TIENDAS Y MARCAS'} EJE CAFETERO</h2>
                 <p>Gestión de Talento Humano y SST</p>
-                <p style="font-size: 10px; opacity: 0.7;">ACTA DE EVALUACIÓN INDIVIDUAL</p>
             </div>
-            <img src="IMG/tym-img.jpg" class="logo-report">
+            <img src="${logoEmpresa}" class="logo-report">
         </div>
 
-        <div class="report-title">Soporte de Evaluación: ${res.modulo_nombre}</div>
+        <div class="report-title">Acta de Evaluación ${tipo}: ${res.eval_nombre}</div>
 
         <div class="report-grid">
-            <div class="info-item"><strong>Nombre del Trabajador:</strong><br>${res.usuario_nombre}</div>
-            <div class="info-item"><strong>Documento C.C.:</strong><br>${res.usuario_cedula}</div>
-            <div class="info-item"><strong>Cargo Evaluado:</strong><br>${res.usuario_cargo || 'Personal de Operaciones'}</div>
-            <div class="info-item"><strong>Fecha y Hora:</strong><br>${fechaExtensa}</div>
+            <div class="info-item"><strong>Empresa:</strong><br>${res.empresa || 'TYM'}</div>
+            <div class="info-item"><strong>Nombre Trabajador:</strong><br>${res.usuario_nombre}</div>
+            <div class="info-item"><strong>Documento de Identidad:</strong><br>${res.usuario_cedula}</div>
+            <div class="info-item"><strong>Calificación General:</strong><br>${res.porcentaje_total}% (${res.porcentaje_total >= 75 ? 'APROBADO' : 'REPROBADO'})</div>
         </div>
 
-        <div class="report-summary-box">
-            <div class="summary-score">
-                <h3>${res.porcentaje_total}%</h3>
-                <p>RESULTADO</p>
-            </div>
-            <div class="summary-score">
-                <h3>${res.total_correctas} / ${res.total_preguntas}</h3>
-                <p>ACIERTOS</p>
-            </div>
-            <div class="summary-score">
-                <h3>${res.porcentaje_total >= 75 ? 'APTITUD DEMOSTRADA' : 'NO APTO'}</h3>
-                <p>CONCEPTO FINAL</p>
-            </div>
-        </div>
-
-        <h3>Desglose de la Evaluación:</h3>
+        <h3>Contenido de la Evaluación:</h3>
         <table class="questions-detail">
             <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Pregunta Realizada</th>
-                    <th>Usuario</th>
-                    <th>Correcta</th>
-                    <th>Estado</th>
-                </tr>
+                <tr><th>#</th><th>Descripción del Componente</th><th>Usuario</th><th>Correcta / Meta</th><th>Estado</th></tr>
             </thead>
-            <tbody>
-                ${rowsHTML}
-            </tbody>
+            <tbody>${rowsHTML}</tbody>
         </table>
 
-        <div class="footer-signatures">
-            <div class="sig-section">
-                <div class="sig-line">Firma del Trabajador</div>
-                <div style="font-size: 10px; margin-top:5px;">C.C. ${res.usuario_cedula}</div>
-            </div>
-            <div class="sig-section">
-                <div class="sig-line">Responsable SST / Operaciones</div>
-                <div style="font-size: 10px; margin-top:5px;">Huella dactilar</div>
-            </div>
+        <div class="footer-signatures" style="margin-top: 100px;">
+            <div class="sig-line">Firma del Trabajador<br><small>C.C. ${res.usuario_cedula}</small></div>
+            <div class="sig-line">Responsable SST / Operaciones<br><small>Sello o Huella</small></div>
         </div>
     `;
 
-    // Truco para forzar la impresión: Aseguramos que el DOM se cargue antes de llamar al print
-    setTimeout(() => {
-        window.print();
-    }, 500);
+    setTimeout(() => { window.print(); }, 500);
 };
 
 document.addEventListener('DOMContentLoaded', cargarResultados);

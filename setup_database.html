@@ -187,6 +187,17 @@ CREATE TABLE IF NOT EXISTS resultados_modulo_especifico (
                     )
                 `
 
+                // AÑADIR COLUMNAS NUEVAS SI NO EXISTEN
+                try {
+                    await sql`ALTER TABLE resultados_modulo_especifico ADD COLUMN IF NOT EXISTS empresa VARCHAR(20) DEFAULT 'TYM'`;
+                    await sql`ALTER TABLE resultados_modulo_especifico ADD COLUMN IF NOT EXISTS tipo_evaluacion VARCHAR(20) DEFAULT 'CARGO'`;
+                    
+                    await sql`ALTER TABLE resultados_evaluacion ADD COLUMN IF NOT EXISTS empresa VARCHAR(20) DEFAULT 'TYM'`;
+                    await sql`ALTER TABLE resultados_evaluacion ADD COLUMN IF NOT EXISTS tipo_evaluacion VARCHAR(20) DEFAULT 'SST'`;
+                } catch (e) {
+                    console.log("Las columnas ya existían o hubo un aviso menor:", e);
+                }
+
                 log.className = 'log-ok'
                 log.innerHTML = '✅ ¡Base de datos configurada exitosamente! Ya puedes iniciar sesión.'
                 btn.textContent = '✅ Completado'

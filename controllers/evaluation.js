@@ -16,6 +16,7 @@ const form = document.getElementById("evalForm")
 
 async function guardarResultadoEnBD(porcentajeTotal, porcentajesModulo) {
     const usuarioActual = JSON.parse(localStorage.getItem("usuarioActual"))
+    const empresa = localStorage.getItem('empresaSeleccionada') || 'TYM';
 
     if (!usuarioActual || !usuarioActual.id) {
         throw new Error('No se encontró el usuario actual')
@@ -30,7 +31,9 @@ async function guardarResultadoEnBD(porcentajeTotal, porcentajesModulo) {
             modulo_3,
             modulo_4,
             modulo_5,
-            modulo_6
+            modulo_6,
+            empresa,
+            tipo_evaluacion
         )
         VALUES (
             ${usuarioActual.id},
@@ -40,7 +43,9 @@ async function guardarResultadoEnBD(porcentajeTotal, porcentajesModulo) {
             ${porcentajesModulo[2]},
             ${porcentajesModulo[3]},
             ${porcentajesModulo[4]},
-            ${porcentajesModulo[5]}
+            ${porcentajesModulo[5]},
+            ${empresa.toUpperCase()},
+            'SST'
         )
         RETURNING *
     `
