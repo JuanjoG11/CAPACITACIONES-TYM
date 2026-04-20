@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "dev": "npx serve . --listen 3000",
     "build": "echo 'Static Site'"
   }
 }

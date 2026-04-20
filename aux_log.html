@@ -1,108 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="CSS/aux_log.css">
-
-<title>Inducción Auxiliar Logístico</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inducción | Auxiliar Logístico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/induction_master.css">
 </head>
-
 <body>
 
-<main class="log-modulo">
+<main class="ind-modulo">
+    <header class="ind-modulo__header">
+        <h1>Inducción: <span>Auxiliar Logístico</span></h1>
+        <p>Revisa cada diapositiva. Al llegar al final, podrás iniciar tu evaluación.</p>
+    </header>
 
-<header class="log-modulo__header">
-<h1>Inducción - Auxiliar Logístico</h1>
-<p>Observa atentamente cada imagen antes de realizar el cuestionario</p>
-</header>
+    <section class="ind-carousel">
+        <div class="ind-carousel__slides">
+            <figure class="ind-slide active">
+                <img src="IMG/IMG_AUX-LOG/1.png" alt="Slide 1">
+                <figcaption>Responsabilidades del Cargo</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/2.png" alt="Slide 2">
+                <figcaption>Funciones Generales</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/3.png" alt="Slide 3">
+                <figcaption>Proceso Operativo</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/4.png" alt="Slide 4">
+                <figcaption>Toma de Decisiones</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/5.png" alt="Slide 5">
+                <figcaption>Preparación de la Ruta</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/6.png" alt="Slide 6">
+                <figcaption>Proceso de Entrega</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/7.png" alt="Slide 7">
+                <figcaption>Manejo de Dinero y Consignaciones</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/8.png" alt="Slide 8">
+                <figcaption>Cierre de Ruta y Cuadre</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-LOG/9.png" alt="Slide 9">
+                <figcaption>Relaciones Interpersonales</figcaption>
+            </figure>
+        </div>
 
+        <nav class="ind-carousel__controls">
+            <button id="ind-prev" class="ind-btn-control">Anterior</button>
+            <span id="ind-contador" class="ind-contador">1 / 9</span>
+            <button id="ind-next" class="ind-btn-control">Siguiente</button>
+        </nav>
+    </section>
 
-<section class="log-carousel" aria-label="Galería de inducción">
-
-<div class="log-carousel__slides">
-
-<figure class="log-slide active">
-<img src="IMG/IMG_AUX-LOG/1.png" alt="auxiliar logistico 1">
-<figcaption>Responsabilidades del Cargo</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/2.png" alt="auxiliar logistico 2">
-<figcaption>Funciones Generales</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/3.png" alt="auxiliar logistico 3">
-<figcaption>Proceso Operativo del Auxiliar Logístico</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/4.png" alt="auxiliar logistico 4">
-<figcaption>Toma de Decisiones del Auxiliar Logístico</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/5.png" alt="auxiliar logistico 5">
-<figcaption>Preparación de la Ruta</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/6.png" alt="auxiliar logistico 6">
-<figcaption>Proceso de Entrega a los Clientes</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/7.png" alt="auxiliar logistico 7">
-<figcaption>Manejo de Dinero y Proceso de consignaciones</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/8.png" alt="auxiliar logistico 8">
-<figcaption>Cierre de Ruta y Cuadre Final</figcaption>
-</figure>
-
-<figure class="log-slide">
-<img src="IMG/IMG_AUX-LOG/9.png" alt="auxiliar logistico 9">
-<figcaption>Relaciones Interpersonales y Comportamiento</figcaption>
-</figure>
-
-</div>
-
-
-<nav class="log-carousel__controls">
-
-<button id="log-prev" aria-label="Imagen anterior">
-Anterior
-</button>
-
-<span id="log-contador">1/9</span>
-
-<button id="log-next" aria-label="Imagen siguiente">
-Siguiente
-</button>
-
-</nav>
-
-</section>
-
-
-<section class="log-evaluacion">
-
-<form id="log-evalForm">
-
-<button id="log-btnEvaluacion" type="button" disabled>
-Iniciar Evaluación
-</button>
-
-</form>
-
-</section>
-
+    <section class="ind-evaluacion">
+        <button id="ind-btnEvaluacion" class="ind-btn-eval" disabled>
+            Iniciar Evaluación →
+        </button>
+    </section>
 </main>
 
 <script src="controllers/aux_log.js"></script>
-
 </body>
 </html>

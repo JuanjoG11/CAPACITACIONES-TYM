@@ -1,56 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultado Jefe de Bodega</title>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
-
+    <title>Resultado | Líder de Bodega</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <link rel="stylesheet" href="CSS/result_jefe_bod.css">
+    <link rel="stylesheet" href="CSS/resultado1.css">
 </head>
 <body>
-    <header class="header-jefebod">
-        <h1>Resultados de la Evaluación</h1>
-        <p>Lider de Bodega</p>
+    <header class="header-resultados">
+        <h1>Resultado de <span>Inducción</span></h1>
+        <p>Perfil: Líder de Bodega</p>
     </header>
 
-    <main class="container-jefebod">
-        <section class="card-jefebod" aria-labelledby="resumen-titulo">
+    <main class="contenedor-principal">
+        <section class="card-resumen">
             <header>
-                <h2 id="resumen-jefebod" class="resumen-jefebod">Resultado General De</h2>
-                <h2 id="nombreUsuario" class="nombre-usuario"></h2>
+                <h2 class="resumen-titulo">Resultado de</h2>
+                <h2 id="nombreUsuario" class="nombre-usuario">—</h2>
             </header>
-
-            <article class="resultado-total-jefebod">
-                <p id="porcentajeFinal-jefebod" class="porcentaje-jefebod">0%</p>
-                <p class="descripcion-jefebod">Resultado Total Obtenido</p>
-                <p id="detalleTexto-jefebod" class="descripcion-jefebod">0 de 0 respuestas correctas</p>
+            <article class="resultado-total">
+                <p id="porcentajeFinal" class="porcentaje">0%</p>
+                <p class="descripcion">Puntaje obtenido</p>
+                <p id="detalleTexto" style="margin-top:1.5rem; opacity:0.6; font-size:1.4rem;">0 de 0 respuestas correctas</p>
             </article>
         </section>
 
-        <section aria-labelledby="grafico-titulo">
-            <header>
-                <h2 id="grafico-container">Desempeño por Módulo</h2>
-            </header>
-
-            <figure class="grafico-container-jefebod">
-                <canvas id="graficoResultados"></canvas>
-                <figcaption>
-                    Porcentaje obtenido en la evaluación.
-                </figcaption>
-            </figure>
+        <section class="grafico-container">
+            <h2 id="grafico-titulo">Desempeño Visual</h2>
+            <canvas id="graficoResultados"></canvas>
         </section>
     </main>
 
-    <footer class="footer-resultados-jefebod">
-        <nav>
-            <a href="mode_capacitation.html" class="boton-volver-jefebod">
-                Volver al inicio
-            </a>
-        </nav>
+    <footer class="footer-resultados">
+        <a href="mode_capacitation.html" class="boton-volver">Volver al Inicio</a>
     </footer>
 
     <script type="module" src="controllers/evaluacionmodulos.js"></script>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Base de Datos | TYM & TAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --primary: #e67e22;
+            --text: #f8fafc;
+            --success: #22c55e;
+            --error: #ef4444;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: var(--card);
+            padding: 3rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 { color: var(--primary); margin-bottom: 0.5rem; }
+        p { opacity: 0.8; margin-bottom: 2rem; }
+        pre {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            overflow-x: auto;
+            color: #7dd3fc;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 1rem 2rem;
+            border-radius: 0.8rem;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(230,126,34,0.4); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        #log {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            display: none;
+        }
+        .log-ok { background: rgba(34, 197, 94, 0.15); border: 1px solid var(--success); color: var(--success); display: block !important; }
+        .log-err { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--error); color: var(--error); display: block !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Configuración Inicial</h1>
+        <p>Este script preparará las tablas necesarias en tu base de datos de Neon para que el login y los resultados funcionen correctamente.</p>
+        
+        <h3>Tablas a crear:</h3>
+        <pre id="sql-preview">
+-- 1. Tabla de Usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(150),
+    tipo_doc VARCHAR(5),
+    num_doc VARCHAR(20) UNIQUE,
+    cargo VARCHAR(30),
+    area VARCHAR(10),
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Tabla de Resultados Generales
+CREATE TABLE IF NOT EXISTS resultados_evaluacion (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    porcentaje_total DECIMAL,
+    modulo_1 DECIMAL,
+    modulo_2 DECIMAL,
+    modulo_3 DECIMAL,
+    modulo_4 DECIMAL,
+    modulo_5 DECIMAL,
+    modulo_6 DECIMAL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. Tabla de Resultados por Módulo
+CREATE TABLE IF NOT EXISTS resultados_modulo_especifico (
+    id SERIAL PRIMARY KEY,
+    usuario_id INTEGER REFERENCES usuarios(id),
+    modulo_nombre VARCHAR(100),
+    porcentaje_total DECIMAL,
+    total_correctas INTEGER,
+    total_preguntas INTEGER,
+    respuestas_usuario JSONB,
+    respuestas_correctas JSONB,
+    detalle_resultado TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</pre>
+
+        <div class="actions">
+            <button id="btn-setup" class="btn-primary">▶ Configurar Base de Datos</button>
+            <a href="login.html" style="color: var(--primary); align-self: center; text-decoration: none; font-weight: 600;">← Ir al Login</a>
+        </div>
+
+        <div id="log"></div>
+    </div>
+
+    <script type="module">
+        import { neon } from 'https://esm.sh/@neondatabase/serverless'
+
+        const DATABASE_URL = 'postgresql://neondb_owner:npg_lZf8U5sRDhWn@ep-misty-waterfall-an5hzirp-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+        const sql = neon(DATABASE_URL)
+
+        const btn = document.getElementById('btn-setup')
+        const log = document.getElementById('log')
+
+        btn.addEventListener('click', async () => {
+            btn.disabled = true
+            btn.textContent = '⏳ Procesando...'
+            log.className = ''
+            log.innerHTML = 'Ejecutando sentencias SQL...'
+
+            try {
+                // Ejecutamos las creaciones por separado para evitar problemas de transacción en serverless
+                await sql`
+                    CREATE TABLE IF NOT EXISTS usuarios (
+                        id SERIAL PRIMARY KEY,
+                        nombre VARCHAR(150),
+                        tipo_doc VARCHAR(5),
+                        num_doc VARCHAR(20) UNIQUE,
+                        cargo VARCHAR(30),
+                        area VARCHAR(10),
+                        fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    )
+                `
+                
+                await sql`
+                    CREATE TABLE IF NOT EXISTS resultados_evaluacion (
+                        id SERIAL PRIMARY KEY,
+                        usuario_id INTEGER REFERENCES usuarios(id),
+                        porcentaje_total DECIMAL,
+                        modulo_1 DECIMAL,
+                        modulo_2 DECIMAL,
+                        modulo_3 DECIMAL,
+                        modulo_4 DECIMAL,
+                        modulo_5 DECIMAL,
+                        modulo_6 DECIMAL,
+                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    )
+                `
+
+                await sql`
+                    CREATE TABLE IF NOT EXISTS resultados_modulo_especifico (
+                        id SERIAL PRIMARY KEY,
+                        usuario_id INTEGER REFERENCES usuarios(id),
+                        modulo_nombre VARCHAR(100),
+                        porcentaje_total DECIMAL,
+                        total_correctas INTEGER,
+                        total_preguntas INTEGER,
+                        respuestas_usuario JSONB,
+                        respuestas_correctas JSONB,
+                        detalle_resultado TEXT,
+                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                    )
+                `
+
+                log.className = 'log-ok'
+                log.innerHTML = '✅ ¡Base de datos configurada exitosamente! Ya puedes iniciar sesión.'
+                btn.textContent = '✅ Completado'
+            } catch (err) {
+                console.error(err)
+                log.className = 'log-err'
+                log.innerHTML = '❌ Error: ' + err.message
+                btn.disabled = false
+                btn.textContent = 'Reintentar'
+            }
+        })
+    </script>
+</body>
+</html>

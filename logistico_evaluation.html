@@ -1,183 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Cuestionario - Auxiliar Logístico</title>
-
-  <link rel="stylesheet" href="CSS/logistico_evaluacion.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación | Auxiliar Logístico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/evaluation_master.css">
 </head>
-
 <body>
-  <main class="log-evaluacion">
-    <header class="log-evaluacion__header">
-      <h1>Evaluación del Módulo</h1>
-      <p>Auxiliar Logístico</p>
-    </header>
+    <main class="eval-modulo">
+        <header class="eval-modulo__header">
+            <h1>Evaluación de Módulo</h1>
+            <p>Auxiliar Logístico</p>
+        </header>
 
-    <form id="log-formEvaluacion">
-      <!-- PREGUNTA 1 -->
-      <fieldset class="log-pregunta">
-        <legend>1. ¿Cuál es la principal responsabilidad del auxiliar logístico?</legend>
+        <form id="log-formEvaluacion">
+            <!-- P1 -->
+            <fieldset class="eval-pregunta">
+                <legend>1. ¿Cuál es la principal responsabilidad del auxiliar logístico?</legend>
+                <label><input type="radio" name="p1" value="A"><span>Supervisar al personal</span></label>
+                <label><input type="radio" name="p1" value="B"><span>Garantizar correcta entrega de productos, manejo de documentos y dinero</span></label>
+                <label><input type="radio" name="p1" value="C"><span>Administrar la empresa</span></label>
+                <label><input type="radio" name="p1" value="D"><span>Manejar el sistema contable</span></label>
+            </fieldset>
 
-        <label>
-          <input type="radio" name="p1" value="A">
-          Supervisar al personal
-        </label>
+            <!-- P2 -->
+            <fieldset class="eval-pregunta">
+                <legend>2. ¿Qué debe hacer el auxiliar antes de iniciar la ruta?</legend>
+                <label><input type="radio" name="p2" value="A"><span>Supervisar al personal</span></label>
+                <label><input type="radio" name="p2" value="B"><span>Verificar mercancía, documentos y ruta</span></label>
+                <label><input type="radio" name="p2" value="C"><span>Administrar la empresa</span></label>
+                <label><input type="radio" name="p2" value="D"><span>Manejar el sistema contable</span></label>
+            </fieldset>
 
-        <label>
-          <input type="radio" name="p1" value="B">
-          Garantizar la correcta entrega de productos y manejo de documentos y dinero
-        </label>
+            <!-- P3 -->
+            <fieldset class="eval-pregunta">
+                <legend>3. ¿Qué debe hacer si el cliente devuelve el pedido?</legend>
+                <label><input type="radio" name="p3" value="A"><span>Ignorarlo</span></label>
+                <label><input type="radio" name="p3" value="B"><span>Cancelar la factura</span></label>
+                <label><input type="radio" name="p3" value="C"><span>Solicitar firma con motivo de devolución</span></label>
+                <label><input type="radio" name="p3" value="D"><span>Guardar la mercancía para consumo propio</span></label>
+            </fieldset>
 
-        <label>
-          <input type="radio" name="p1" value="C">
-          Administrar la empresa
-        </label>
+            <!-- P4 -->
+            <fieldset class="eval-pregunta">
+                <legend>4. ¿Qué debe hacer con el dinero recaudado en ruta?</legend>
+                <label><input type="radio" name="p4" value="A"><span>Guardarlo hasta el final del día</span></label>
+                <label><input type="radio" name="p4" value="B"><span>Realizar caletas y consignaciones en bancos asignados</span></label>
+                <label><input type="radio" name="p4" value="C"><span>Entregarlo al conductor</span></label>
+                <label><input type="radio" name="p4" value="D"><span>Llevarlo a casa</span></label>
+            </fieldset>
 
-        <label>
-          <input type="radio" name="p1" value="D">
-          Manejar el sistema contable
-        </label>
-      </fieldset>
+            <!-- P5 -->
+            <fieldset class="eval-pregunta">
+                <legend>5. Al finalizar la jornada el auxiliar debe:</legend>
+                <label><input type="radio" name="p5" value="A"><span>Irse a casa</span></label>
+                <label><input type="radio" name="p5" value="B"><span>Dejar el vehículo</span></label>
+                <label><input type="radio" name="p5" value="C"><span>Realizar cuadre de dinero y entregar reportes</span></label>
+                <label><input type="radio" name="p5" value="D"><span>Llamar a los clientes</span></label>
+            </fieldset>
 
-      <!-- PREGUNTA 2 -->
-      <fieldset class="log-pregunta">
-        <legend>2. ¿Qué debe hacer el auxiliar antes de iniciar la ruta?</legend>
+            <!-- P6 -->
+            <fieldset class="eval-pregunta">
+                <legend>6. ¿Qué debe hacer con la documentación entregada?</legend>
+                <label><input type="radio" name="p6" value="A"><span>Desecharla al terminar</span></label>
+                <label><input type="radio" name="p6" value="B"><span>Guardarla sin revisión</span></label>
+                <label><input type="radio" name="p6" value="C"><span>Entregarla completa y soportada junto con el cierre de ruta</span></label>
+                <label><input type="radio" name="p6" value="D"><span>Dejarla en el vehículo</span></label>
+            </fieldset>
 
-        <label>
-          <input type="radio" name="p2" value="A">
-          Supervisar al personal
-        </label>
+            <div class="eval-acciones">
+                <button type="button" class="eval-btn-submit" onclick="clasificar()">
+                    Finalizar Evaluación
+                </button>
+            </div>
+        </form>
+    </main>
 
-        <label>
-          <input type="radio" name="p2" value="B">
-          Verificar mercancía, documentos y ruta
-        </label>
-
-        <label>
-          <input type="radio" name="p2" value="C">
-          Administrar la empresa
-        </label>
-
-        <label>
-          <input type="radio" name="p2" value="D">
-          Manejar el sistema contable
-        </label>
-      </fieldset>
-
-      <!-- PREGUNTA 3 -->
-      <fieldset class="log-pregunta">
-        <legend>3. ¿Qué debe hacer si el cliente devuelve el pedido?</legend>
-
-        <label>
-          <input type="radio" name="p3" value="A">
-          Ignorarlo
-        </label>
-
-        <label>
-          <input type="radio" name="p3" value="B">
-          Cancelar la factura
-        </label>
-
-        <label>
-          <input type="radio" name="p3" value="C">
-          Solicitar firma con motivo de devolución
-        </label>
-
-        <label>
-          <input type="radio" name="p3" value="D">
-          Guardar la mercancía para consumo propio
-        </label>
-      </fieldset>
-
-      <!-- PREGUNTA 4 -->
-      <fieldset class="log-pregunta">
-        <legend>4. ¿Qué debe hacer con el dinero recaudado durante la ruta?</legend>
-
-        <label>
-          <input type="radio" name="p4" value="A">
-          Guardarlo hasta el final del día
-        </label>
-
-        <label>
-          <input type="radio" name="p4" value="B">
-          Realizar caletas y consignaciones en bancos asignados
-        </label>
-
-        <label>
-          <input type="radio" name="p4" value="C">
-          Entregarlo al conductor
-        </label>
-
-        <label>
-          <input type="radio" name="p4" value="D">
-          Llevarlo a casa
-        </label>
-      </fieldset>
-
-      <!-- PREGUNTA 5 -->
-      <fieldset class="log-pregunta">
-        <legend>5. Al finalizar la jornada el auxiliar debe:</legend>
-
-        <label>
-          <input type="radio" name="p5" value="A">
-          Irse a casa
-        </label>
-
-        <label>
-          <input type="radio" name="p5" value="B">
-          Dejar el vehículo
-        </label>
-
-        <label>
-          <input type="radio" name="p5" value="C">
-          Realizar cuadre de dinero y entregar reportes
-        </label>
-
-        <label>
-          <input type="radio" name="p5" value="D">
-          Llamar a los clientes
-        </label>
-      </fieldset>
-
-      <!-- PREGUNTA 6 -->
-      <fieldset class="log-pregunta">
-        <legend>6. ¿Qué debe hacer el auxiliar logístico con la documentación entregada durante la ruta?</legend>
-
-        <label>
-          <input type="radio" name="p6" value="A">
-          Desecharla al terminar la jornada
-        </label>
-
-        <label>
-          <input type="radio" name="p6" value="B">
-          Guardarla sin revisión
-        </label>
-
-        <label>
-          <input type="radio" name="p6" value="C">
-          Entregarla completa y debidamente soportada junto con el cierre de ruta
-        </label>
-
-        <label>
-          <input type="radio" name="p6" value="D">
-          Dejarla en el vehículo
-        </label>
-      </fieldset>
-
-      <!-- AQUI ESTA EL BOTON PARA LA VALIDACION -->
-      <div class="log-acciones">
-        <button type="button" onclick="clasificar()">
-          Finalizar Evaluación
-        </button>
-      </div>
-    </form>
-
-    <section id="log-resultado" class="log-resultado"></section>
-  </main>
-
-  <script type="module" src="controllers/evaluacionmodulos.js"></script>
+    <script type="module" src="controllers/evaluacionmodulos.js"></script>
 </body>
 </html>

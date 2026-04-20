@@ -1,76 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuestionario - Jefe de Bodega</title>
-
-    <link rel="stylesheet" href="CSS/jefe_evaluation.css">
+    <title>Evaluación | Líder de Bodega</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/evaluation_master.css">
 </head>
 <body>
-    <main class="jefe-evaluacion">
-        <header class="jefe-evaluacion__header">
-            <h1>Evaluación del Módulo</h1>
-            <p>Jefe de Bodega</p>
+    <main class="eval-modulo">
+        <header class="eval-modulo__header">
+            <h1>Evaluación de Módulo</h1>
+            <p>Líder de Bodega</p>
         </header>
 
         <form id="jefe-formEvaluacion">
-            <fieldset class="jefe-pregunta">
-                <legend>1. ¿Que debe verificar el jefe de bodega antes de que un producto salga de la empresa?</legend>
-
-                <label><input type="radio" name="p1" value="A"> Que el vehículo tenga combustible</label>
-                <label><input type="radio" name="p1" value="B"> Que tenga su respectiva factura</label>
-                <label><input type="radio" name="p1" value="C"> Que el cliente haya pagado</label>
-                <label><input type="radio" name="p1" value="D"> Que el producto sea promocional</label>
+            <!-- P1 -->
+            <fieldset class="eval-pregunta">
+                <legend>1. ¿Qué debe verificar el líder de bodega antes de que un producto salga de la empresa?</legend>
+                <label><input type="radio" name="p1" value="A"><span>Que el vehículo tenga combustible</span></label>
+                <label><input type="radio" name="p1" value="B"><span>Que tenga su respectiva factura</span></label>
+                <label><input type="radio" name="p1" value="C"><span>Que el cliente haya pagado</span></label>
+                <label><input type="radio" name="p1" value="D"><span>Que el producto sea promocional</span></label>
             </fieldset>
 
-            <fieldset class="jefe-pregunta">
-                <legend>2. ¿Quiénes estan bajo la responsabilidad directa del jefe de bodega?</legend>
-
-                <label><input type="radio" name="p2" value="A"> Gerentes</label>
-                <label><input type="radio" name="p2" value="B"> Vendedores</label>
-                <label><input type="radio" name="p2" value="C"> Auxiliares de bodega</label>
-                <label><input type="radio" name="p2" value="D"> Clientes</label>
+            <!-- P2 -->
+            <fieldset class="eval-pregunta">
+                <legend>2. ¿Quiénes están bajo la responsabilidad directa del líder de bodega?</legend>
+                <label><input type="radio" name="p2" value="A"><span>Gerentes</span></label>
+                <label><input type="radio" name="p2" value="B"><span>Vendedores</span></label>
+                <label><input type="radio" name="p2" value="C"><span>Auxiliares de bodega</span></label>
+                <label><input type="radio" name="p2" value="D"><span>Clientes</span></label>
             </fieldset>
 
-            <fieldset class="jefe-pregunta">
+            <!-- P3 -->
+            <fieldset class="eval-pregunta">
                 <legend>3. ¿Cada cuánto se deben realizar reuniones de seguimiento con el personal?</legend>
-
-                <label><input type="radio" name="p3" value="A"> Diariamente</label>
-                <label><input type="radio" name="p3" value="B"> Semanalmente</label>
-                <label><input type="radio" name="p3" value="C"> Mensualmente</label>
-                <label><input type="radio" name="p3" value="D"> Anualmente</label>
+                <label><input type="radio" name="p3" value="A"><span>Diariamente</span></label>
+                <label><input type="radio" name="p3" value="B"><span>Semanalmente</span></label>
+                <label><input type="radio" name="p3" value="C"><span>Mensualmente</span></label>
+                <label><input type="radio" name="p3" value="D"><span>Anualmente</span></label>
             </fieldset>
 
-            <fieldset class="jefe-pregunta">
-                <legend>4. ¿Que debe garantizar el jefe de bodega respecto a los pedidos despachados?</legend>
-
-                <label><input type="radio" name="p4" value="A"> Que se facture el 50%</label>
-                <label><input type="radio" name="p4" value="B"> Que se entregue el 70%</label>
-                <label><input type="radio" name="p4" value="C"> Que se entregue el 100%</label>
-                <label><input type="radio" name="p4" value="D"> Que se entregue cuando sea posible</label>
+            <!-- P4 -->
+            <fieldset class="eval-pregunta">
+                <legend>4. ¿Qué debe garantizar el líder de bodega respecto a los pedidos despachados?</legend>
+                <label><input type="radio" name="p4" value="A"><span>Que se facture el 50%</span></label>
+                <label><input type="radio" name="p4" value="B"><span>Que se entregue el 70%</span></label>
+                <label><input type="radio" name="p4" value="C"><span>Que se entregue el 100%</span></label>
+                <label><input type="radio" name="p4" value="D"><span>Que se entregue cuando sea posible</span></label>
             </fieldset>
 
-            <fieldset class="jefe-pregunta">
-                <legend>5. ¿Qué debe hacer el jefe de bodega en caso de detectar anomalías?</legend>
-
-                <label><input type="radio" name="p5" value="A"> Ignorarlas</label>
-                <label><input type="radio" name="p5" value="B"> Esperar al cierre de mes</label>
-                <label><input type="radio" name="p5" value="C"> Reportarlas oportunamente a su jefe inmediato</label>
-                <label><input type="radio" name="p5" value="D"> Guardarlas en archivo</label>
+            <!-- P5 -->
+            <fieldset class="eval-pregunta">
+                <legend>5. ¿Qué debe hacer el líder de bodega en caso de detectar anomalías?</legend>
+                <label><input type="radio" name="p5" value="A"><span>Ignorarlas</span></label>
+                <label><input type="radio" name="p5" value="B"><span>Esperar al cierre de mes</span></label>
+                <label><input type="radio" name="p5" value="C"><span>Reportarlas oportunamente a su jefe inmediato</span></label>
+                <label><input type="radio" name="p5" value="D"><span>Guardarlas en archivo</span></label>
             </fieldset>
 
-            <fieldset class="jefe-pregunta">
-                <legend>6. ¿Qué debe garantizar el jefe de bodega en la bodega?</legend>
-
-                <label><input type="radio" name="p6" value="A"> Solo almacenamiento</label>
-                <label><input type="radio" name="p6" value="B"> Publicidad de productos</label>
-                <label><input type="radio" name="p6" value="C"> Ventas directas</label>
-                <label><input type="radio" name="p6" value="D"> Orden, limpieza y buen estado de herramientas</label>
+            <!-- P6 -->
+            <fieldset class="eval-pregunta">
+                <legend>6. ¿Qué debe garantizar el líder de bodega en la zona de trabajo?</legend>
+                <label><input type="radio" name="p6" value="A"><span>Solo almacenamiento</span></label>
+                <label><input type="radio" name="p6" value="B"><span>Publicidad de productos</span></label>
+                <label><input type="radio" name="p6" value="C"><span>Ventas directas</span></label>
+                <label><input type="radio" name="p6" value="D"><span>Orden, limpieza y buen estado de herramientas</span></label>
             </fieldset>
 
-            <div class="log-acciones">
-                <button type="button" onclick="clasificar()">
+            <div class="eval-acciones">
+                <button type="button" class="eval-btn-submit" onclick="clasificar()">
                     Finalizar Evaluación
                 </button>
             </div>

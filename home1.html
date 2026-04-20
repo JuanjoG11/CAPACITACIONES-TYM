@@ -1,391 +1,292 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primer Paso Seguro</title>
+    <title>Evaluación SST | Primer Paso Seguro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/home1.css">
 </head>
 <body>
-    <nav class="navbar" role="navigation" aria-label="Barra principal">
-        <!-- <header>
-            <h1>Bienvenido a tu Primer Paso Seguro!</h1>
-            <p class="subtitle">Aquí podrás identificar todo lo relacionado con gestión humana y evaluaremos tu nivel de conocimiento</p>
-        </header> -->
+    <nav class="navbar">
+        <h1>Evaluación: <span>Primer Paso Seguro</span></h1>
     </nav>
 
     <main>
         <form id="evalForm">
             <div class="carousel-container">
                 <button type="button" class="carousel-btn carousel-btn-prev" aria-label="Módulo anterior">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                         <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>g
-                
-                <div class="modulos-carousel">
-            <!-- MODULO 1: Seguridad y Salud en el Trabajo -->
-            <section class="modulo" data-modulo="1">
-                <header>
-                    <h2>Módulo 1: Seguridad y Salud en el Trabajo</h2>
-                    <span class="modulo-badge">1/6</span>
-                </header>
-
-                <div class="modulo-images">
-                    <img src="IMG/SST.jpeg" alt="Imagen SST" class="modulo-img">
-                    <img src="IMG/SST2.jpeg" alt="Imagen SST2" class="modulo-img">
-                </div>
-
-                <article class="pregunta" data-qid="q1" data-number="1">
-                    <h3>Pregunta 1</h3>
-                    <p><strong>La Seguridad y Salud en el Trabajo (SG - SST) busca principalmente:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q1" value="A"><span>A) Aumentar la productividad mediante controles disciplinarios</span></label>
-                        <label class="option"><input type="radio" name="q1" value="B"><span>B) Proteger y promover la salud de los trabajadores previniendo accidentes y enfermedades</span></label>
-                        <label class="option"><input type="radio" name="q1" value="C"><span>C) Reducir costos administrativos de la empresa</span></label>
-                        <label class="option"><input type="radio" name="q1" value="D"><span>D) Controlar únicamente los accidentes graves</span></label>
-                    </fieldset>
-                </article>      
-
-                <article class="pregunta" data-qid="q2" data-number="2">
-                    <h3>Pregunta 2</h3>
-                    <p><strong>Según la política del sistema de gestión de TIENDAS Y MARCAS DEL EJE CAFETERO S.A.S, la alta dirección se compromete a:</strong> </p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q2" value="A"><span>A) Delegar la seguridad solo al área de SST</span></label>
-                        <label class="option"><input type="radio" name="q2" value="B"><span>B) Garantizar el bienestar físico, mental y social de los empleados</span></label>
-                        <label class="option"><input type="radio" name="q2" value="C"><span>C) Aplicar sanciones ante cualquier accidente</span></label>
-                        <label class="option"><input type="radio" name="q2" value="D"><span>D) Cumplir únicamente en la normativa mínima</span></label>
-                    </fieldset>
-                </article>
-            
-                <article class="pregunta" data-qid="q3" data-number="3">
-                    <h3>Pregunta 3</h3>
-                    <p><strong>¿Cuál de las siguientes acciones NO corresponde a un compromiso de la empresa en el SG - SST?</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q3" value="A"><span>A) Cumplir la normatividad vigente en riesgos laborales</span></label>
-                        <label class="option"><input type="radio" name="q3" value="B"><span>B) Identificar y evaluar peligros</span></label>
-                        <label class="option"><input type="radio" name="q3" value="C"><span>C) Proteger la seguridad y salud de los trabajadores</span></label>
-                        <label class="option"><input type="radio" name="q3" value="D"><span>D) Trasladar la responsabilidad del SG-SST solo a los empleados</span></label>
-                    </fieldset>
-                </article>
-            </section>
-
-            <!-- Modulo 4: Definicion de accidente y riesgo laboral -->
-             <section class="modulo" data-modulo="2">
-                <header>
-                    <h2>Módulo 2: Definición de Accidente y Riesgo Laboral</h2>
-                    <span class="modulo-badge">2/6</span>
-                </header>
-
-
-                <div class="modulo-images2">
-                    <img src="IMG/ACCIDENTE LABORAL.jpeg" alt="Accidente Laboral" class="modulo-img2">
-                </div>
-
-                <article class="pregunta" data-qid="q4" data-number="1">
-                    <h3>Pregunta 1</h3>
-                    <p><strong>El mensajero de la empresa, sufre una caída en vía pública mientras cumple una orden de su jefe fuera del horario laboral. Según la definición de accidente de trabajo, ¿cómo se clasifica?: </strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q4" value="A"> <span>A) Un accidente común, porque ocurrió fuera del horario laboral</span></label>
-                        <label class="option"><input type="radio" name="q4" value="B"> <span>B) Un accidente de tránsito sin relación laboral</span></label>
-                        <label class="option"><input type="radio" name="q4" value="C"> <span>C) Un accidente de trabajo, porque ocurrió ejecutando órdenes del empleador</span></label>
-                        <label class="option"><input type="radio" name="q4" value="D"> <span>D) Un incidente, ya que fue fuera de la empresa</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q5" data-number="2">
-                    <h3>Pregunta 2</h3>
-                    <p><strong>En una bodega, un trabajador resbala por un derrame de liquido. No se lesiona y continúa su labor sin reportar lo ocurrido. Desde el enfoque del SG - SST, la principal consecuencia de no reportar este hecho es que:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"> <input type="radio" name="q5" value="A"> <span>A) No se active el seguro</span></label> 
-                        <label class="option"> <input type="radio" name="q5" value="B"> <span>B) Se pierda el registro estadístico</span></label> 
-                        <label class="option"> <input type="radio" name="q5" value="C"> <span>C) Se mantenga un riesgo que puede causar un accidente grave posteriormente</span></label> 
-                        <label class="option"> <input type="radio" name="q5" value="D"> <span>D) Se sancione al trabajador</span></label> 
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q6" data-number="3">
-                    <h3>Pregunta 3</h3>
-                    <p><strong>¿Cuál de las siguientes situaciones evidencia mejor la diferencia entre un accidente de trabajo y un incidente?</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q6" value="A"><span>A) El accidente ocurre de día y el incidente de noche</span></label>
-                        <label class="option"><input type="radio" name="q6" value="B"><span>B) El accidente genera lesiones y el incidente no, aunque tuvo potencial de causarlas</span></label>
-                        <label class="option"><input type="radio" name="q6" value="C"><span>C) El incidente siempre ocurre fuera de la empresa</span></label>
-                        <label class="option"><input type="radio" name="q6" value="D"><span>D) El accidente es menos grave que el incidente</span></label>
-                    </fieldset>
-                </article>
-            </section>
-
-            <!-- MODULO 5: Plan estrategico de seguridad vial - Conceptos de Regulaciones -->
-            <section class="modulo" data-modulo="3">
-                <header>
-                    <h2>Módulo 3: Plan Estratégico de Seguridad Vial (PESV)</h2>
-                    <span class="modulo-badge">3/6</span>
-                </header>
-
-                <div class="modulo-images3">
-                    <img src="IMG/PLAN ESTRATEGICO.jpeg" alt="Plan estrategico" class="modulo-img3">
-                    <img src="IMG/PESV.jpeg" alt="PESV" class="modulo-img3">
-                </div>
-
-                <article class="pregunta" data-qid="q7" data-number="1">
-                    <h3>Pregunta 1</h3>
-                    <p><strong>Vas conduciendo un vehículo de la empresa y llegas tarde a una entrega. La vía está despejada. ¿Qué haces?</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q7" value="A"> <span>A) Aceleras para recuperar el tiempo perdido</span></label>
-                        <label class="option"><input type="radio" name="q7" value="B"> <span>B) Mantienes la velocidad permitida, aunque llegues tarde</span></label>
-                        <label class="option"><input type="radio" name="q7" value="C"> <span>C) Aumentas la velocidad solo en tramos sin tráfico</span></label>
-                        <label class="option"><input type="radio" name="q7" value="D"> <span>D) Delegas la conducción a un pasajero</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q8" data-number="2">
-                    <h3>Pregunta 2</h3>
-                    <p><strong>Has cumplido varias horas de conducción y sientes fatiga, pero aún falta un tramo del recorrido. ¿Qué decisión tomas?</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"> <input type="radio" name="q8" value="A"> <span>A) Continúas porque ya falta poco</span></label>
-                        <label class="option"> <input type="radio" name="q8" value="B"> <span>B) Tomas un café y sigues conduciendo</span></label>
-                        <label class="option"> <input type="radio" name="q8" value="C"> <span>C) Realizas una pausa de descanso según lo establecido</span></label>
-                        <label class="option"> <input type="radio" name="q8" value="D"> <span>D) Aumentas la música para mantenerte despierto</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q9" data-number="3">
-                    <h3>Pregunta 3</h3>
-                    <p><strong>Durante la conducción de un vehículo de la empresa, el uso del cinturón de seguridad es obligatorio en todo momento, sin importar la distancia del recorrido.</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q9" value="A"><span>A) Verdadero</span></label>
-                        <label class="option"><input type="radio" name="q9" value="B"><span>B) Falso</span></label>
-                    </fieldset>
-                </article>
-
-                
-
-
-            </section>
-
-            <!-- Modulo 6: protocolo de Respuesta en Accidentes de transito -->
-            <section class="modulo" data-modulo="4">
-                <header>
-                    <h2>Módulo 4: Plan de Emergencias</h2>
-                    <span class="modulo-badge">4/6</span>
-                </header>
-
-                <div class="modulo-images4">
-                    <img src="IMG/PLAN EMERGENCIA.jpeg" alt="Plan Emergencia" class="modulo-img4">
-                    <img src="IMG/PLAN EMERGENCIA2.jpeg" alt="Plan Emergencia 2" class="modulo-img4">
-                </div>
-
-
-                <article class="pregunta" data-qid="q10" data-number="1">
-                    <h3>Pregunta 1</h3>
-                    <p><strong>Los triángulos o conos reflectivos en caso de accidente deben ubicarse:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la rspuesta correcta:</legend>
-                        <label class="option"><input type="radio" name="q10" value="A"> <span>A) Junto al vehículo accidentado</span></label>
-                        <label class="option"><input type="radio" name="q10" value="B"> <span>B) A 5 metros del vehículo</span></label>
-                        <label class="option"><input type="radio" name="q10" value="C"> <span>C) Entre 30 y 50 metros adelante y atrás</span></label>
-                        <label class="option"><input type="radio" name="q10" value="D"> <span>D) Solo en vías principales</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q11" data-number="2">
-                    <h3>Pregunta 2</h3>
-                    <p><strong>Durante una emergencia, la primera acción que debe realizar un trabajador es:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q11" value="A"> <span>A) Correr hacia la salida</span></label>
-                        <label class="option"><input type="radio" name="q11" value="B"> <span>B) Llamar a un familiar</span></label>
-                        <label class="option"><input type="radio" name="q11" value="C"> <span>C) Conservar la calma</span></label>
-                        <label class="option"><input type="radio" name="q11" value="D"> <span>D) Abandonar el puesto sin avisar</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q12" data-number="3">
-                    <h3>Pregunta 3</h3>
-                    <p><strong>Una vez finalizada la emergencia, el reingreso a las instalaciones debe hacerse:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q12" value="A"> <span>A) Inmediatamente</span></label>
-                        <label class="option"><input type="radio" name="q12" value="B"> <span>B) Por decisión personal</span></label>
-                        <label class="option"><input type="radio" name="q12" value="C"> <span>C) Solo cuando los grupos de apoyo lo autoricen</span></label>
-                        <label class="option"><input type="radio" name="q12" value="D"> <span>D) Al terminar la jornada</span></label>
-                    </fieldset>
-                </article>
-            </section>
-
-            <section class="modulo" data-modulo="5">
-                <header>
-                    <h2>Módulo 5: Comité de Convivencia Laboral</h2>
-                    <span class="modulo-badge">5/6</span>
-                </header>
-
-                <div class="modulo-images5">
-                    <img src="IMG/CONVIVENCIA LABORAL.jpeg" alt="Convivencia Laboral" class="modulo-img5">
-                </div>
-
-                <article class="pregunta" data-qid="q13" data-number="1">
-                    <h3>Pregunta 1</h3>
-                    <p><strong>El acoso laboral se caracteriza por:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q13" value="A"><span>A)Un hecho aislado sin consecuencias</span></label>
-                        <label class="option"><input type="radio" name="q13" value="B"><span>B)Conductas persistentes que generan miedo o desmotivación</span></label>
-                        <label class="option"><input type="radio" name="q13" value="C"><span>C)Conflictos ocasionales</span></label>
-                        <label class="option"><input type="radio" name="q13" value="D"><span>D)Llamados de atención justificados</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q14" data-number="2">
-                    <h3>Pregunta 2</h3>
-                    <p><strong>El comité de Convivencia Laboral es una medida ___________ del acoso laboral.</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q14" value="A"><span>A) Correctiva</span></label>
-                        <label class="option"><input type="radio" name="q14" value="B"><span>B) Preventiva</span></label>
-                        <label class="option"><input type="radio" name="q14" value="C"><span>C) Punitiva</span></label>
-                        <label class="option"><input type="radio" name="q14" value="D"><span>D) Temporal</span></label>
-                    </fieldset> 
-                </article>
-
-                <article class="pregunta" data-qid="q15" data-number="3">
-                    <h3>Pregunta 3</h3>
-                    <p><strong>El acoso Laboral solo puede ser ejercido por jefes o supervisores.</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q15" value="A"><span>A) Verdadero</span></label>
-                        <label class="option"><input type="radio" name="q15" value="B"><span>B) Falso</span></label>
-                    </fieldset>
-                </article>
-            </section>
-
-            <section class="modulo" data-modulo="6">
-                <header>
-                    <h2>Módulo 6 COPASST</h2>
-                    <span class="modulo-badge">6/6</span>
-                </header>
-
-                 <div class="modulo-images6">
-                    <img src="IMG/COPASST.jpeg" alt="COPASST" class="modulo-img6">
-                    <img src="IMG/COPASST2.png" alt="COPASST" class="modulo-img6">
-                </div>
-
-                <article class="pregunta" data-qid="q16" data-number="1">
-                    <h3>Pregunta 1</h3>
-                    <p><strong>El COPASST está integrado por:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q16" value="A"><span>A)Solo el área de SST</span></label>
-                        <label class="option"><input type="radio" name="q16" value="B"><span>B)Delegados de  trabajadores y la administración en paridad</span></label>
-                        <label class="option"><input type="radio" name="q16" value="C"><span>C)Solo trabajadores</span></label>
-                        <label class="option"><input type="radio" name="q16" value="D"><span>D)Solo la administración</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q17" data-number="2">
-                    <h3>pregunta 2</h3>
-                    <p><strong>Una de las funciones principales del COPASST es:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q17" value="A"><span>A) Aplicar sanciones a los trabajadores</span></label>
-                        <label class="option"><input type="radio" name="q17" value="B"><span>B) Identificar peligros y evaluar riesgos</span></label>
-                        <label class="option"><input type="radio" name="q17" value="C"><span>C) Determinar el salario</span></label>
-                        <label class="option"><input type="radio" name="q17" value="D"><span>D) Hacer contrataciones</span></label>
-                    </fieldset>
-                </article>
-
-                <article class="pregunta" data-qid="q18" data-number="3">
-                    <h3>Pregunta 3</h3>
-                    <p><strong>El periodo de servicio en el COPASST es de:</strong></p>
-                    <fieldset>
-                        <legend>Selecciona la respuesta correcta</legend>
-                        <label class="option"><input type="radio" name="q18" value="A"> <span>A) 1 año</span></label>
-                        <label class="option"><input type="radio" name="q18" value="B"> <span>B) 2 años</span></label>
-                        <label class="option"><input type="radio" name="q18" value="C"> <span>C) 3 años</span></label>
-                        <label class="option"><input type="radio" name="q18" value="D"> <span>D) A voluntad</span></label>
-                    </fieldset>
-                </article>
-
-                <div class="formulario-actions">
-                    <button type="submit" class="btn-submit">Enviar Evaluación</button>
-                    <button type="reset" class="btn-reset">Limpiar Respuestas</button>
-                </div>
-            </section>
-                </div>
-
-                <button type="button" class="carousel-btn carousel-btn-next" aria-label="Módulo siguiente">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </button>
                 
-                <a href="resultado1.html" class="btn-resultado">
-                    Ver resultados
-                </a>
-            </div>
+                <div class="modulos-carousel">
+                    <!-- MODULO 1 -->
+                    <section class="modulo" data-modulo="1">
+                        <header>
+                            <h2>1. Seguridad y Salud en el Trabajo</h2>
+                            <span class="modulo-badge">Módulo 1 de 6</span>
+                        </header>
+                        <div class="modulo-images">
+                            <img src="IMG/SST.jpeg" alt="SST" class="modulo-img">
+                            <img src="IMG/SST2.jpeg" alt="SST 2" class="modulo-img">
+                        </div>
+                        <article class="pregunta" data-qid="q1" data-number="1">
+                            <h3>Pregunta 01</h3>
+                            <p>La Seguridad y Salud en el Trabajo (SG - SST) busca principalmente:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q1" value="A"><span>A) Aumentar la productividad mediante controles disciplinarios</span></label>
+                                <label class="option"><input type="radio" name="q1" value="B"><span>B) Proteger y promover la salud de los trabajadores</span></label>
+                                <label class="option"><input type="radio" name="q1" value="C"><span>C) Reducir costos administrativos de la empresa</span></label>
+                                <label class="option"><input type="radio" name="q1" value="D"><span>D) Controlar únicamente los accidentes graves</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q2" data-number="2">
+                            <h3>Pregunta 02</h3>
+                            <p>Según la política de TYM, la alta dirección se compromete a:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q2" value="A"><span>A) Delegar la seguridad solo al área de SST</span></label>
+                                <label class="option"><input type="radio" name="q2" value="B"><span>B) Garantizar el bienestar físico, mental y social</span></label>
+                                <label class="option"><input type="radio" name="q2" value="C"><span>C) Aplicar sanciones ante cualquier accidente</span></label>
+                                <label class="option"><input type="radio" name="q2" value="D"><span>D) Cumplir únicamente en la normativa mínima</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q3" data-number="3">
+                            <h3>Pregunta 03</h3>
+                            <p>¿Qué acción NO corresponde a un compromiso de la empresa en el SG - SST?</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q3" value="A"><span>A) Cumplir la normatividad vigente</span></label>
+                                <label class="option"><input type="radio" name="q3" value="B"><span>B) Identificar y evaluar peligros</span></label>
+                                <label class="option"><input type="radio" name="q3" value="C"><span>C) Proteger la seguridad y salud</span></label>
+                                <label class="option"><input type="radio" name="q3" value="D"><span>D) Trasladar la responsabilidad solo a los empleados</span></label>
+                            </fieldset>
+                        </article>
+                    </section>
 
-            <output id="result" aria-live="polite" style="display: none;"> </output>
-            <div style="margin-top: 40px; display: none;">
-                <canvas id="graficoResultados"></canvas>
+                    <!-- MODULO 2 -->
+                    <section class="modulo" data-modulo="2">
+                        <header>
+                            <h2>2. Accidente y Riesgo Laboral</h2>
+                            <span class="modulo-badge">Módulo 2 de 6</span>
+                        </header>
+                        <div class="modulo-images2">
+                            <img src="IMG/ACCIDENTE LABORAL.jpeg" alt="Accidente" class="modulo-img2">
+                        </div>
+                        <article class="pregunta" data-qid="q4" data-number="4">
+                            <h3>Pregunta 04</h3>
+                            <p>Un mensajero sufre una caída cumpliendo órdenes de su jefe fuera del horario laboral:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q4" value="A"><span>A) Un accidente común</span></label>
+                                <label class="option"><input type="radio" name="q4" value="B"><span>B) Un accidente de tránsito sin relación laboral</span></label>
+                                <label class="option"><input type="radio" name="q4" value="C"><span>C) Un accidente de trabajo (órdenes del empleador)</span></label>
+                                <label class="option"><input type="radio" name="q4" value="D"><span>D) Un incidente, ya que fue fuera de la empresa</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q5" data-number="5">
+                            <h3>Pregunta 05</h3>
+                            <p>Consecuencia principal de no reportar un resbalón sin lesión (incidente):</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q5" value="A"><span>A) No se active el seguro</span></label>
+                                <label class="option"><input type="radio" name="q5" value="B"><span>B) Se pierda el registro estadístico</span></label>
+                                <label class="option"><input type="radio" name="q5" value="C"><span>C) Se mantiene un riesgo que puede causar accidente grave</span></label>
+                                <label class="option"><input type="radio" name="q5" value="D"><span>D) Se sancione al trabajador</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q6" data-number="6">
+                            <h3>Pregunta 06</h3>
+                            <p>¿Diferencia principal entre accidente de trabajo e incidente?</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q6" value="A"><span>A) El accidente ocurre de día y el incidente de noche</span></label>
+                                <label class="option"><input type="radio" name="q6" value="B"><span>B) El accidente genera lesiones y el incidente no</span></label>
+                                <label class="option"><input type="radio" name="q6" value="C"><span>C) El incidente siempre ocurre fuera</span></label>
+                                <label class="option"><input type="radio" name="q6" value="D"><span>D) El accidente es menos grave</span></label>
+                            </fieldset>
+                        </article>
+                    </section>
+
+                    <!-- MODULO 3 -->
+                    <section class="modulo" data-modulo="3">
+                        <header>
+                            <h2>3. Seguridad Vial (PESV)</h2>
+                            <span class="modulo-badge">Módulo 3 de 6</span>
+                        </header>
+                        <div class="modulo-images3">
+                            <img src="IMG/PLAN ESTRATEGICO.jpeg" alt="PESV 1" class="modulo-img3">
+                            <img src="IMG/PESV.jpeg" alt="PESV 2" class="modulo-img3">
+                        </div>
+                        <article class="pregunta" data-qid="q7" data-number="7">
+                            <h3>Pregunta 07</h3>
+                            <p>Vas tarde a una entrega y la vía está despejada. ¿Qué haces?</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q7" value="A"><span>A) Aceleras para recuperar tiempo</span></label>
+                                <label class="option"><input type="radio" name="q7" value="B"><span>B) Mantienes la velocidad permitida</span></label>
+                                <label class="option"><input type="radio" name="q7" value="C"><span>C) Aumentas velocidad en tramos sin tráfico</span></label>
+                                <label class="option"><input type="radio" name="q7" value="D"><span>D) Delegas la conducción</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q8" data-number="8">
+                            <h3>Pregunta 08</h3>
+                            <p>Sientes fatiga tras varias horas de conducción. ¿Qué haces?</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q8" value="A"><span>A) Continúas porque falta poco</span></label>
+                                <label class="option"><input type="radio" name="q8" value="B"><span>B) Tomas un café y sigues</span></label>
+                                <label class="option"><input type="radio" name="q8" value="C"><span>C) Realizas una pausa de descanso establecida</span></label>
+                                <label class="option"><input type="radio" name="q8" value="D"><span>D) Aumentas la música</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q9" data-number="9">
+                            <h3>Pregunta 09</h3>
+                            <p>¿El uso del cinturón es obligatorio siempre sin importar la distancia?</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q9" value="A"><span>A) Verdadero</span></label>
+                                <label class="option"><input type="radio" name="q9" value="B"><span>B) Falso</span></label>
+                            </fieldset>
+                        </article>
+                    </section>
+
+                    <!-- MODULO 4 -->
+                    <section class="modulo" data-modulo="4">
+                        <header>
+                            <h2>4. Plan de Emergencias</h2>
+                            <span class="modulo-badge">Módulo 4 de 6</span>
+                        </header>
+                        <div class="modulo-images4">
+                            <img src="IMG/PLAN EMERGENCIA.jpeg" alt="Emergencia 1" class="modulo-img4">
+                        </div>
+                        <article class="pregunta" data-qid="q10" data-number="10">
+                            <h3>Pregunta 10</h3>
+                            <p>Ubicación de conos reflectivos en caso de accidente:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q10" value="A"><span>A) Junto al vehículo</span></label>
+                                <label class="option"><input type="radio" name="q10" value="B"><span>B) A 5 metros</span></label>
+                                <label class="option"><input type="radio" name="q10" value="C"><span>C) Entre 30 y 50 metros adelante y atrás</span></label>
+                                <label class="option"><input type="radio" name="q10" value="D"><span>D) Solo en vías principales</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q11" data-number="11">
+                            <h3>Pregunta 11</h3>
+                            <p>Primera acción que debe realizar un trabajador en emergencia:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q11" value="A"><span>A) Correr hacia la salida</span></label>
+                                <label class="option"><input type="radio" name="q11" value="B"><span>B) Llamar a un familiar</span></label>
+                                <label class="option"><input type="radio" name="q11" value="C"><span>C) Conservar la calma</span></label>
+                                <label class="option"><input type="radio" name="q11" value="D"><span>D) Abandonar el puesto sin avisar</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q12" data-number="12">
+                            <h3>Pregunta 12</h3>
+                            <p>El reingreso tras una emergencia se hace cuando:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q12" value="A"><span>A) Inmediatamente</span></label>
+                                <label class="option"><input type="radio" name="q12" value="B"><span>B) Por decisión personal</span></label>
+                                <label class="option"><input type="radio" name="q12" value="C"><span>C) Solo cuando los grupos de apoyo autoricen</span></label>
+                                <label class="option"><input type="radio" name="q12" value="D"><span>D) Al terminar la jornada</span></label>
+                            </fieldset>
+                        </article>
+                    </section>
+
+                    <!-- MODULO 5 -->
+                    <section class="modulo" data-modulo="5">
+                        <header>
+                            <h2>5. Convivencia Laboral</h2>
+                            <span class="modulo-badge">Módulo 5 de 6</span>
+                        </header>
+                        <div class="modulo-images5">
+                            <img src="IMG/CONVIVENCIA LABORAL.jpeg" alt="Convivencia" class="modulo-img5">
+                        </div>
+                        <article class="pregunta" data-qid="q13" data-number="13">
+                            <h3>Pregunta 13</h3>
+                            <p>El acoso laboral se caracteriza por:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q13" value="A"><span>A) Un hecho aislado</span></label>
+                                <label class="option"><input type="radio" name="q13" value="B"><span>B) Conductas persistentes de miedo/desmotivación</span></label>
+                                <label class="option"><input type="radio" name="q13" value="C"><span>C) Conflictos ocasionales</span></label>
+                                <label class="option"><input type="radio" name="q13" value="D"><span>D) Llamados de atención justificados</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q14" data-number="14">
+                            <h3>Pregunta 14</h3>
+                            <p>El Comité de Convivencia es una medida:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q14" value="A"><span>A) Correctiva</span></label>
+                                <label class="option"><input type="radio" name="q14" value="B"><span>B) Preventiva</span></label>
+                                <label class="option"><input type="radio" name="q14" value="C"><span>C) Punitiva</span></label>
+                                <label class="option"><input type="radio" name="q14" value="D"><span>D) Temporal</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q15" data-number="15">
+                            <h3>Pregunta 15</h3>
+                            <p>¿El acoso solo puede ser ejercido por jefes?</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q15" value="A"><span>A) Verdadero</span></label>
+                                <label class="option"><input type="radio" name="q15" value="B"><span>B) Falso</span></label>
+                            </fieldset>
+                        </article>
+                    </section>
+
+                    <!-- MODULO 6 -->
+                    <section class="modulo" data-modulo="6">
+                        <header>
+                            <h2>6. COPASST</h2>
+                            <span class="modulo-badge">Módulo 6 de 6</span>
+                        </header>
+                        <div class="modulo-images6">
+                            <img src="IMG/COPASST.jpeg" alt="COPASST" class="modulo-img6">
+                        </div>
+                        <article class="pregunta" data-qid="q16" data-number="16">
+                            <h3>Pregunta 16</h3>
+                            <p>El COPASST está integrado por:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q16" value="A"><span>A) Solo el área de SST</span></label>
+                                <label class="option"><input type="radio" name="q16" value="B"><span>B) Delegados de trabajadores y admin en paridad</span></label>
+                                <label class="option"><input type="radio" name="q16" value="C"><span>C) Solo trabajadores</span></label>
+                                <label class="option"><input type="radio" name="q16" value="D"><span>D) Solo la administración</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q17" data-number="17">
+                            <h3>Pregunta 17</h3>
+                            <p>Función principal del COPASST:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q17" value="A"><span>A) Aplicar sanciones</span></label>
+                                <label class="option"><input type="radio" name="q17" value="B"><span>B) Identificar peligros y evaluar riesgos</span></label>
+                                <label class="option"><input type="radio" name="q17" value="C"><span>C) Determinar el salario</span></label>
+                                <label class="option"><input type="radio" name="q17" value="D"><span>D) Hacer contrataciones</span></label>
+                            </fieldset>
+                        </article>
+                        <article class="pregunta" data-qid="q18" data-number="18">
+                            <h3>Pregunta 18</h3>
+                            <p>Periodo de servicio en el COPASST:</p>
+                            <fieldset>
+                                <label class="option"><input type="radio" name="q18" value="A"><span>A) 1 año</span></label>
+                                <label class="option"><input type="radio" name="q18" value="B"><span>B) 2 años</span></label>
+                                <label class="option"><input type="radio" name="q18" value="C"><span>C) 3 años</span></label>
+                                <label class="option"><input type="radio" name="q18" value="D"><span>D) A voluntad</span></label>
+                            </fieldset>
+                        </article>
+
+                        <div class="formulario-actions">
+                            <button type="submit" class="btn-submit">Finalizar Evaluación</button>
+                            <button type="reset" class="btn-reset">Limpiar</button>
+                        </div>
+                    </section>
+                </div>
+
+                <button type="button" class="carousel-btn carousel-btn-next" aria-label="Módulo siguiente">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </div>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js-plugin-datalabels@2"></script>
-            <script src="models/evaluationModel.js"></script>
-            <script type="module" src="controllers/evaluation.js"></script>
         </form>
     </main>
 
+    <script src="models/evaluationModel.js"></script>
+    <script type="module" src="controllers/evaluation.js"></script>
     <script>
-        // Validar formulario antes de enviar
-        const evalForm = document.querySelector('#evalForm');
-        evalForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Obtener todos los grupos de preguntas
-            const preguntas = document.querySelectorAll('.pregunta');
-            let todasRespondidas = true;
-            let firstUnanswered = null;
-            let preguntasNoRespondidas = [];
-            
-            // Verificar si cada pregunta tiene una respuesta seleccionada
-            preguntas.forEach((pregunta, index) => {
-                const radioButtons = pregunta.querySelectorAll('input[type="radio"]');
-                if (radioButtons.length > 0) {
-                    const nombrePregunta = radioButtons[0].name;
-                    const respondida = document.querySelector(`input[name="${nombrePregunta}"]:checked`);
-                    
-                    if (!respondida) {
-                        todasRespondidas = false;
-                        preguntasNoRespondidas.push(nombrePregunta);
-                        if (!firstUnanswered) {
-                            firstUnanswered = pregunta;
-                        }
-                    }
-                }
-            });
-            
-            // Si no todas están respondidas, mostrar error
-            if (!todasRespondidas) {
-                alert('⚠️ ATENCIÓN:\n\nPor favor completa TODAS las preguntas antes de enviar la evaluación.\n\nPreguntas sin responder: ' + preguntasNoRespondidas.length);
-                // Volver al módulo 1 sin scroll
-                scrollToModule(0);
-                return false;
-            }
-            
-            // Si todas están respondidas, redirigir
-            window.location.href = 'resultado1.html';
-        });
-
-        // Carousel navigation
+        // Carousel logic simple
         const carousel = document.querySelector('.modulos-carousel');
         const prevBtn = document.querySelector('.carousel-btn-prev');
         const nextBtn = document.querySelector('.carousel-btn-next');
@@ -395,54 +296,20 @@
         function scrollToModule(index) {
             if (index < 0) index = 0;
             if (index >= modulos.length) index = modulos.length - 1;
-            
             currentIndex = index;
             const scrollAmount = modulos[index].offsetLeft;
-            carousel.scrollLeft = scrollAmount;
-            
-            updateButtonStates();
+            carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+            updateBtnStates();
         }
 
-        function updateButtonStates() {
+        function updateBtnStates() {
             prevBtn.disabled = currentIndex === 0;
             nextBtn.disabled = currentIndex === modulos.length - 1;
         }
 
-        prevBtn.addEventListener('click', () => {
-            scrollToModule(currentIndex - 1);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            scrollToModule(currentIndex + 1);
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                scrollToModule(currentIndex + 1);
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                scrollToModule(currentIndex - 1);
-            }
-            cxx  
-        });
-
-        // Initialize
-        updateButtonStates();
-
-        // Hide navbar on scroll - mantenerlo escondido hasta volver al tope
-        const navbar = document.querySelector('.navbar');
-
-        window.addEventListener('scroll', function() {
-            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            if(currentScroll > 0) {
-                navbar.classList.add('navbar-hide');
-            } else {
-                navbar.classList.remove('navbar-hide');
-            }
-        });
+        prevBtn.onclick = () => scrollToModule(currentIndex - 1);
+        nextBtn.onclick = () => scrollToModule(currentIndex + 1);
+        updateBtnStates();
     </script>
 </body>
 </html>

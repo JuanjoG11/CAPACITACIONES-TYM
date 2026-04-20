@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesion</title>
+    <title>Ingresar | Capacitaciones TYM &amp; TAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
@@ -32,10 +35,10 @@
             <label for="cargo1" class="login-label">Cargo: </label>
             <select id="cargo1" class="login-select">
                 <option value="">Seleccione...</option>
-                <option value="aux_logistico">Auxiliar Logístico</option>
-                <option value="aux_separacion">Auxiliar de Separación</option>
-                <option value="lider_despacho">Auxiliar de Bodega</option>
-                <option value="lider_recibo">Líder de Bodega</option>
+                <option value="aux_log">Auxiliar Logístico</option>
+                <option value="aux_sep">Auxiliar de Separación</option>
+                <option value="aux_bod">Auxiliar de Bodega</option>
+                <option value="jefe_bod">Líder de Bodega</option>
             </select>
 
             <footer>
@@ -69,10 +72,10 @@
             <label for="cargo2" class="login-label">Cargo: </label>
             <select id="cargo2" class="login-select">
                 <option value="">Seleccione...</option>
-                <option value="aux_logistico">Auxiliar Logístico</option>
-                <option value="aux_separacion">Auxiliar de Separación</option>
-                <option value="lider_despacho">Auxiliar de Bodega</option>
-                <option value="lider_recibo">Líder de bodega</option>
+                <option value="aux_log">Auxiliar Logístico</option>
+                <option value="aux_sep">Auxiliar de Separación</option>
+                <option value="aux_bod">Auxiliar de Bodega</option>
+                <option value="jefe_bod">Líder de bodega</option>
             </select>
 
             <footer>
@@ -81,6 +84,21 @@
         </fieldset>
     </form>
 
+<script>
+    // Lógica simple que funciona siempre (incluso sin servidor)
+    (function() {
+        const area = (new URLSearchParams(window.location.search).get('area') || '').toLowerCase().trim();
+        const fTat = document.getElementById('login-tat');
+        const fTym = document.getElementById('login-tym');
+        if (area === 'tat') {
+            if (fTym) fTym.style.display = 'none';
+            if (fTat) fTat.style.display = 'flex';
+        } else if (area === 'tym') {
+            if (fTat) fTat.style.display = 'none';
+            if (fTym) fTym.style.display = 'flex';
+        }
+    })();
+</script>
 <script type="module" src="controllers/login.js"></script>
 </body>
 </html>

@@ -71,23 +71,11 @@ function obtenerConfiguracionActual() {
 }
 
 function obtenerElementoPorcentaje() {
-  return (
-    document.getElementById('porcentajeFinal-jefebod') ||
-    document.getElementById('porcentajeFinal-auxlog') ||
-    document.getElementById('porcentajeFinal-auxsep') ||
-    document.getElementById('porcentajeFinal-auxbod') ||
-    document.getElementById('porcentajeFinal')
-  )
+  return document.getElementById('porcentajeFinal')
 }
 
 function obtenerElementoDetalle() {
-  return (
-    document.getElementById('detalleTexto-jefebod') ||
-    document.getElementById('detalleTexto-auxlog') ||
-    document.getElementById('detalleTexto-auxsep') ||
-    document.getElementById('detalleTexto-auxbod') ||
-    document.getElementById('detalleTexto')
-  )
+  return document.getElementById('detalleTexto')
 }
 
 function esPaginaResultado() {
@@ -149,7 +137,7 @@ function generarGraficoCircular(porcentaje) {
       labels: ['Acierto', 'Pendiente'],
       datasets: [{
         data: [porcentaje, 100 - porcentaje],
-        backgroundColor: ['#0B4FA1', '#E5E7EB'],
+        backgroundColor: ['#2980b9', 'rgba(255,255,255,0.1)'],
         borderWidth: 0,
         hoverOffset: 4
       }]
@@ -157,18 +145,13 @@ function generarGraficoCircular(porcentaje) {
     options: {
       responsive: true,
       maintainAspectRatio: true,
-      cutout: '72%',
+      cutout: '80%',
       plugins: {
         legend: {
-          display: true,
-          position: 'bottom'
+          display: false
         },
         tooltip: {
-          callbacks: {
-            label: function (context) {
-              return context.raw + '%'
-            }
-          }
+          enabled: true
         }
       }
     },
@@ -177,8 +160,8 @@ function generarGraficoCircular(porcentaje) {
       beforeDraw(chart) {
         const { width, height, ctx } = chart
         ctx.save()
-        ctx.font = '700 28px Inter'
-        ctx.fillStyle = '#111827'
+        ctx.font = '800 32px Poppins'
+        ctx.fillStyle = '#ffffff'
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
         ctx.fillText(porcentaje + '%', width / 2, height / 2)

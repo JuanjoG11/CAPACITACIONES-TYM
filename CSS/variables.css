@@ -5,30 +5,30 @@
 :root {
     /* ===== COLORES PRIMARIOS ===== */
     
-    /* Azul primario */
-    --primary1-950: #008AD1;
-    --primary1-900: #038ED2;
-    --primary1-800: #0290D4;
-    --primary1-700: #0292D5;
-    --primary1-600: #0294D6;
-    --primary1-500: #0295D7;
-    --primary1-400: #0197D9;
-    --primary1-300: #0199DB;
-    --primary1-200: #009BDC;
-    --primary1-100: #009EE2;
+    /* Azul primario TYM */
+    --primary1-950: #1a5276;
+    --primary1-900: #1f618d;
+    --primary1-800: #2471a3;
+    --primary1-700: #2980b9;
+    --primary1-600: #2e86c1;
+    --primary1-500: #3498db;
+    --primary1-400: #5dade2;
+    --primary1-300: #85c1e9;
+    --primary1-200: #aed6f1;
+    --primary1-100: #d6eaf8;
 
-    /* Naranja primario */
-    --primary2-950: #E47D1E;
-    --primary2-900: #E6801E;
-    --primary2-800: #E08020;
-    --primary2-700: #DE8120;
-    --primary2-600: #E08420;
-    --primary2-500: #E68A1E;
-    --primary2-400: #EB901B;
-    --primary2-300: #EE9419;
-    --primary2-200: #EF951C;
-    --primary2-100: #F1971B;
-    --primary2-50: #F49A15;
+    /* Naranja acento TYM */
+    --primary2-950: #922b21;
+    --primary2-900: #a93226;
+    --primary2-800: #c0392b;
+    --primary2-700: #d35400;
+    --primary2-600: #e67e22;
+    --primary2-500: #e67e22;
+    --primary2-400: #eb9041;
+    --primary2-300: #f0a459;
+    --primary2-200: #f5b97b;
+    --primary2-100: #fad7a0;
+    --primary2-50:  #fdebd0;
 
     /* ===== COLORES SECUNDARIOS ===== */
     
@@ -104,7 +104,7 @@
     --gray-50: #E9E9E9;
 
     /* ===== FUENTES ===== */
-    --main-font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --main-font: 'Poppins', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
     /* ===== TAMAÑOS DE FUENTE ===== */
     --fs-xxxxl: 8.0rem;  /* Ultra grande */
@@ -144,7 +144,12 @@
     --transition-slow: 0.5s ease;
 
     /* ===== GRADIENTES ===== */
-    --gradient-main: linear-gradient(180deg, #F49A15, #FFFFFF, #009EE2);
+    --gradient-main: linear-gradient(-45deg,
+        rgba(41, 128, 185, 0.85),
+        rgba(44, 62, 80, 0.95),
+        rgba(230, 126, 34, 0.85),
+        rgba(44, 62, 80, 0.95)
+    );
     --gradient-rainbow: conic-gradient(
         #ff0000,
         #ff7300,

@@ -1,64 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/aux_bod.css">
-    <title>Induccion Auxiliar de Bodega</title>
+    <title>Inducción | Auxiliar de Bodega</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/induction_master.css">
 </head>
 <body>
 
-    <main class="bod-modulo">
-        <header class="bod-modulo__header">
-            <h1>Inducción - Auxiliar Bodega</h1>
-            <p>Observa atentamente cada imagen antes de realizar el cuestionario</p>
-        </header>
+<main class="ind-modulo">
+    <header class="ind-modulo__header">
+        <h1>Inducción: <span>Auxiliar de Bodega</span></h1>
+        <p>Revisa detalladamente el material operativo. Al finalizar podrás evaluarte.</p>
+    </header>
 
-        <section class="bod-carousel" aria-label="Galeria de inducción">
-            <div class="bod-carousel__slides">
-                <figure class="bod-slide active">
-                    <img src="IMG/IMG_AUX-BOD/1.jpeg" alt="auxiliar de bodega 1">
-                    <figcaption>Responsabilidades del Cargo</figcaption>
-                </figure>
+    <section class="ind-carousel">
+        <div class="ind-carousel__slides">
+            <figure class="ind-slide active">
+                <img src="IMG/IMG_AUX-BOD/1.jpeg" alt="Slide 1">
+                <figcaption>Responsabilidades del Cargo</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-BOD/2.jpeg" alt="Slide 2">
+                <figcaption>Responsabilidades, Relaciones y Normas de Seguridad</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-BOD/3.jpeg" alt="Slide 3">
+                <figcaption>Funciones de 1er Nivel</figcaption>
+            </figure>
+            <figure class="ind-slide">
+                <img src="IMG/IMG_AUX-BOD/4.jpeg" alt="Slide 4">
+                <figcaption>Actividades Operativas Diarias</figcaption>
+            </figure>
+        </div>
 
-                <figure class="bod-slide">
-                    <img src="IMG/IMG_AUX-BOD/2.jpeg" alt="auxiliar de bodega 2">
-                    <figcaption>Responsabilidades, Relaciones y Normas de Seguridad</figcaption>
-                </figure>
+        <nav class="ind-carousel__controls">
+            <button id="ind-prev" class="ind-btn-control">Anterior</button>
+            <span id="ind-contador" class="ind-contador">1 / 4</span>
+            <button id="ind-next" class="ind-btn-control">Siguiente</button>
+        </nav>
+    </section>
 
-                <figure class="bod-slide">
-                    <img src="IMG/IMG_AUX-BOD/3.jpeg" alt="auxiliar de bodega 3">
-                    <figcaption>Funciones de 1er Nivel</figcaption>
-                </figure>
-                <figure class="bod-slide">
-                    <img src="IMG/IMG_AUX-BOD/4.jpeg" alt="auxiliar de bodega 4">
-                    <figcaption>Actividades Operativas Diarias</figcaption>
-                </figure>
-            </div>
+    <section class="ind-evaluacion">
+        <button id="ind-btnEvaluacion" class="ind-btn-eval" disabled>
+            Iniciar Evaluación →
+        </button>
+    </section>
+</main>
 
-            <nav class="bod-carousel__controls">
-                <button id="bod-prev" aria-label="Imagen Anterior">
-                    Anterior
-                </button>
-
-                <span id="bod-contador">1 / 9</span>
-
-                <button id="bod-next" aria-label="Imagen Siguiente">
-                    Siguiente
-                </button>
-            </nav>
-        </section>
-
-        <section class="bod-evaluacion">
-            <form id="bod-evalForm">
-                <button id="bod-btnEvaluacion" type="button" disabled>
-                    Iniciar Evaluación
-                </button>
-            </form>
-        </section>
-    </main>
-
-    <script src="controllers/aux_log.js"></script>
-    
+<script src="controllers/aux_log.js"></script>
 </body>
 </html>

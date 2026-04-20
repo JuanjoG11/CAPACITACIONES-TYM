@@ -1,76 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuestionario - Auxiliar de Separación</title>
-
-    <link rel="stylesheet" href="CSS/separacion_evaluacion.css">
+    <title>Evaluación | Auxiliar de Separación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/evaluation_master.css">
 </head>
 <body>
-    <main class="sep-evaluacion">
-        <header class="sep-evaluacion__header">
-            <h1>Evaluación del Módulo</h1>
+    <main class="eval-modulo">
+        <header class="eval-modulo__header">
+            <h1>Evaluación de Módulo</h1>
             <p>Auxiliar de Separación</p>
         </header>
 
         <form id="sep-formEvaluacion">
-            <fieldset class="sep-pregunta">
+            <!-- P1 -->
+            <fieldset class="eval-pregunta">
                 <legend>1. ¿Cuál es la principal responsabilidad del Auxiliar de Separación?</legend>
-
-                <label><input type="radio" name="p1" value="A"> Realizar procesos administrativos de la empresa</label>
-                <label><input type="radio" name="p1" value="B"> Separar, organizar y preparar los pedidos segun planillas y facturas</label>
-                <label><input type="radio" name="p1" value="C"> Gestionar pagos a proveedores</label>
-                <label><input type="radio" name="p1" value="D"> Realizar transporte de mercancía</label>
+                <label><input type="radio" name="p1" value="A"><span>Realizar procesos administrativos</span></label>
+                <label><input type="radio" name="p1" value="B"><span>Separar, organizar y preparar los pedidos según planillas y facturas</span></label>
+                <label><input type="radio" name="p1" value="C"><span>Gestionar pagos a proveedores</span></label>
+                <label><input type="radio" name="p1" value="D"><span>Realizar transporte de mercancía</span></label>
             </fieldset>
 
-            <fieldset class="sep-pregunta">
+            <!-- P2 -->
+            <fieldset class="eval-pregunta">
                 <legend>2. ¿Quién entrega las planillas de zonas al Auxiliar de Separación?</legend>
-
-                <label><input type="radio" name="p2" value="A"> El proveedor</label>
-                <label><input type="radio" name="p2" value="B"> El cliente</label>
-                <label><input type="radio" name="p2" value="C"> El jefe inmediato o jefe de separación</label>
-                <label><input type="radio" name="p2" value="D"> El área administrativa</label>
+                <label><input type="radio" name="p2" value="A"><span>El proveedor</span></label>
+                <label><input type="radio" name="p2" value="B"><span>El cliente</span></label>
+                <label><input type="radio" name="p2" value="C"><span>El jefe inmediato o jefe de separación</span></label>
+                <label><input type="radio" name="p2" value="D"><span>El área administrativa</span></label>
             </fieldset>
 
-            <fieldset class="sep-pregunta">
+            <!-- P3 -->
+            <fieldset class="eval-pregunta">
                 <legend>3. Antes de proceder a separar mercancía según facturas, el auxiliar debe:</legend>
-
-                <label><input type="radio" name="p3" value="A"> Consultar con un compañero</label>
-                <label><input type="radio" name="p3" value="B"> Esperar confirmación del jefe de bodega</label>
-                <label><input type="radio" name="p3" value="C"> Organizar primero la bodega</label>
-                <label><input type="radio" name="p3" value="D"> Realizar el inventario</label>
+                <label><input type="radio" name="p3" value="A"><span>Consultar con un compañero</span></label>
+                <label><input type="radio" name="p3" value="B"><span>Esperar confirmación del jefe de bodega</span></label>
+                <label><input type="radio" name="p3" value="C"><span>Organizar primero la bodega</span></label>
+                <label><input type="radio" name="p3" value="D"><span>Realizar el inventario</span></label>
             </fieldset>
 
-            <fieldset class="sep-pregunta">
+            <!-- P4 -->
+            <fieldset class="eval-pregunta">
                 <legend>4. Los productos deben separarse inicialmente de acuerdo con:</legend>
-
-                <label><input type="radio" name="p4" value="A"> El color del producto</label>
-                <label><input type="radio" name="p4" value="B"> El tamaño de las cajas</label>
-                <label><input type="radio" name="p4" value="C"> El proveedor</label>
-                <label><input type="radio" name="p4" value="D"> El cliente</label>
+                <label><input type="radio" name="p4" value="A"><span>El color del producto</span></label>
+                <label><input type="radio" name="p4" value="B"><span>El tamaño de las cajas</span></label>
+                <label><input type="radio" name="p4" value="C"><span>El proveedor</span></label>
+                <label><input type="radio" name="p4" value="D"><span>El cliente</span></label>
             </fieldset>
 
-            <fieldset class="sep-pregunta">
+            <!-- P5 -->
+            <fieldset class="eval-pregunta">
                 <legend>5. Cuando existen pedidos devueltos, el auxiliar debe:</legend>
-
-                <label><input type="radio" name="p5" value="A"> Ignorarlos hasta nueva orden</label>
-                <label><input type="radio" name="p5" value="B"> Desecharlos</label>
-                <label><input type="radio" name="p5" value="C"> Revisar la planilla y organizarlos en el lugar adecuado</label>
-                <label><input type="radio" name="p5" value="D"> Entregarlos al cliente nuevamente</label>
+                <label><input type="radio" name="p5" value="A"><span>Ignorarlos hasta nueva orden</span></label>
+                <label><input type="radio" name="p5" value="B"><span>Desecharlos</span></label>
+                <label><input type="radio" name="p5" value="C"><span>Revisar la planilla y organizarlos en el lugar adecuado</span></label>
+                <label><input type="radio" name="p5" value="D"><span>Entregarlos al cliente nuevamente</span></label>
             </fieldset>
 
-            <fieldset class="sep-pregunta">
+            <!-- P6 -->
+            <fieldset class="eval-pregunta">
                 <legend>6. ¿Cuál de los siguientes documentos es considerado de valor dentro del cargo?</legend>
-
-                <label><input type="radio" name="p6" value="A"> Contratos laborales</label>
-                <label><input type="radio" name="p6" value="B"> Facturas</label>
-                <label><input type="radio" name="p6" value="C"> Cartas comerciales</label>
-                <label><input type="radio" name="p6" value="D"> Manuales de usuario</label>
+                <label><input type="radio" name="p6" value="A"><span>Contratos laborales</span></label>
+                <label><input type="radio" name="p6" value="B"><span>Facturas</span></label>
+                <label><input type="radio" name="p6" value="C"><span>Cartas comerciales</span></label>
+                <label><input type="radio" name="p6" value="D"><span>Manuales de usuario</span></label>
             </fieldset>
 
-            <div class="log-acciones">
-                <button type="button" onclick="clasificar()">
+            <div class="eval-acciones">
+                <button type="button" class="eval-btn-submit" onclick="clasificar()">
                     Finalizar Evaluación
                 </button>
             </div>

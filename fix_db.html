@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fix DB Schema</title>
+    <style>
+        body { font-family: monospace; background: #1a1a2e; color: #eee; padding: 2rem; }
+        h1 { color: #e67e22; }
+        pre { background: #0f172a; padding: 1rem; border-radius: 8px; color: #7ec8e3; }
+        .ok { color: #2ecc71; font-weight: bold; }
+        .err { color: #e74c3c; font-weight: bold; }
+        button {
+            margin-top: 1rem; padding: 1rem 2rem; font-size: 1rem; font-weight: bold;
+            background: #e67e22; color: white; border: none; border-radius: 8px; cursor: pointer;
+        }
+        button:hover { background: #d35400; }
+        button:disabled { background: #555; cursor: not-allowed; }
+        #log { margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+    <h1>🛠️ Reparar Schema de Base de Datos</h1>
+    <p>Este script amplía los VARCHAR de la tabla <code>usuarios</code> para soportar nombres completos y cargos correctamente.</p>
+    <pre>
+ALTER TABLE usuarios
+  ALTER COLUMN nombre    TYPE VARCHAR(150),
+  ALTER COLUMN tipo_doc  TYPE VARCHAR(5),
+  ALTER COLUMN num_doc   TYPE VARCHAR(20),
+  ALTER COLUMN cargo     TYPE VARCHAR(30),
+  ALTER COLUMN area      TYPE VARCHAR(10);
+    </pre>
+    <button id="btn" onclick="runFix()">▶ Ejecutar Fix</button>
+    <div id="log"></div>
+
+<script type="module">
+import { neon } from 'https://esm.sh/jsr/@neon/serverless'
+
+const DATABASE_URL = 'postgresql://neondb_owner:npg_lZf8U5sRDhWn@ep-misty-waterfall-an5hzirp-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+const sql = neon(DATABASE_URL)
+
+window.runFix = async function () {
+    const btn = document.getElementById('btn')
+    const log = document.getElementById('log')
+    btn.disabled = true
+    btn.textContent = '⏳ Ejecutando...'
+    log.innerHTML = '<p>Conectando a la base de datos...</p>'
+
+    try {
+        await sql`
+            ALTER TABLE usuarios
+              ALTER COLUMN nombre    TYPE VARCHAR(150),
+              ALTER COLUMN tipo_doc  TYPE VARCHAR(5),
+              ALTER COLUMN num_doc   TYPE VARCHAR(20),
+              ALTER COLUMN cargo     TYPE VARCHAR(30),
+              ALTER COLUMN area      TYPE VARCHAR(10)
+        `
+        log.innerHTML = `
+            <p class="ok">✅ ¡Schema actualizado exitosamente!</p>
+            <p>Los campos ahora soportan nombres y cargos completos.</p>
+            <p>→ <a href="index.html" style="color:#e67e22">Ir al inicio</a></p>
+        `
+        btn.textContent = '✅ Completado'
+    } catch (err) {
+        if (err.message && err.message.includes('does not exist')) {
+            log.innerHTML = `<p class="err">❌ La tabla "usuarios" no existe aún. Primero debes ingresar al menos una vez (aunque falle).</p>`
+        } else {
+            log.innerHTML = `
+                <p class="ok">✅ El schema ya estaba correcto (o ya fue actualizado). Puedes cerrar esta página.</p>
+                <p style="color:#aaa; font-size:0.85em">Detalle: ${err.message}</p>
+                <p>→ <a href="index.html" style="color:#e67e22">Ir al inicio</a></p>
+            `
+        }
+        btn.textContent = 'Reintentar'
+        btn.disabled = false
+    }
+}
+</script>
+</body>
+</html>

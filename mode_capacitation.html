@@ -1,55 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capacitate con nosotros</title>
+    <title>Elegir Capacitación | TYM & TAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/mode_capacitation.css">
-    
 </head>
 <body>
-    <img class="body-img" src="IMG/LOGO6.jpeg">
 
+    <!-- Fondo con imagen oscurecida -->
+    <img class="body-img" src="IMG/LOGO6.jpeg" alt="Fondo">
+
+    <!-- Overlay de gradiente sobre la imagen -->
+    <div class="overlay"></div>
+
+    <!-- Botón volver -->
     <a class="btn-back" href="index.html">← Volver</a>
 
-    <main class="main-container"> 
-        <article class="card1" onclick="location.href='' ">
-            <header class="card_header">
-                <h1>Primer paso seguro</h1>
-                <figure>
-                    <video class="icon-mp4" autoplay muted loop>
-                        <source src="IMG/video2.mp4" type="video/mp4">
-                    </video>
-                </figure>
-            </header>
+    <!-- Título + subtítulo -->
+    <div class="page-header">
+        <h1 class="page-title">¿Qué deseas <span>capacitar</span> hoy?</h1>
+        <p class="page-sub">Selecciona el módulo de inducción que corresponde a tu perfil</p>
+    </div>
 
-            <p class="desc"> Inducción SST</p>
+    <main class="main-container">
 
-            <footer>
+        <!-- CARD 1: SST -->
+        <article class="cap-card" onclick="document.getElementById('link-general').click()">
+            <div class="cap-card__badge">Seguridad</div>
+            <div class="cap-card__media">
+                <video class="icon-mp4" autoplay muted loop playsinline>
+                    <source src="IMG/video2.mp4" type="video/mp4">
+                </video>
+                <div class="cap-card__glow cap-card__glow--blue"></div>
+            </div>
+            <div class="cap-card__body">
+                <h2 class="cap-card__title">Primer Paso Seguro</h2>
+                <p class="cap-card__desc">Inducción SST — Aprende las normas de seguridad y salud en el trabajo que rigen nuestra operación.</p>
+            </div>
+            <footer class="cap-card__footer">
                 <a id="link-general" href="home1.html">
-                    <button id="btn-general" class="btn1">Ingresar</button>
+                    <button id="btn-general" class="cap-btn">Iniciar Inducción →</button>
                 </a>
             </footer>
         </article>
-        
-        <article class="card2" onclick="location.href='' ">
-            <header class="card_header">
-                <h1>Tu puesto, Tu impacto</h1>
-                <figure>
-                    <video class="icon-mp4" autoplay muted loop>
-                        <source src="IMG/VIDEO 1 ALPINA.mp4" type="video/mp4">
-                    </video>
-                </figure>
-            </header>
 
-            <p class="desc">Inducción del cargo.</p>
-
-            <footer>
+        <!-- CARD 2: Cargo -->
+        <article class="cap-card" onclick="document.getElementById('link-modulo').click()">
+            <div class="cap-card__badge cap-card__badge--orange">Tu Cargo</div>
+            <div class="cap-card__media">
+                <video class="icon-mp4" autoplay muted loop playsinline>
+                    <source src="IMG/VIDEO 1 ALPINA.mp4" type="video/mp4">
+                </video>
+                <div class="cap-card__glow cap-card__glow--orange"></div>
+            </div>
+            <div class="cap-card__body">
+                <h2 class="cap-card__title">Tu Puesto, Tu Impacto</h2>
+                <p class="cap-card__desc">Inducción del cargo — Conoce a fondo tus responsabilidades y cómo contribuyes al éxito del equipo.</p>
+            </div>
+            <footer class="cap-card__footer">
                 <a id="link-modulo" href="cards_capacitacion.html">
-                    <button id="btn-modulo" class="btn2">Ingresar</button>
+                    <button id="btn-modulo" class="cap-btn cap-btn--orange">Iniciar Inducción →</button>
                 </a>
             </footer>
         </article>
+
     </main>
 
     <script src="controllers/mode_capacitation.js"></script>

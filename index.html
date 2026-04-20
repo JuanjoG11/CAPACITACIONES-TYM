@@ -1,46 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distribuidora Del Eje</title>
+    <title>Capacitaciones TYM &amp; TAT | Distribuidora del Eje</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <h1 class="principal_title">Bienvenido! Ingresa tu razón social para continuar</h1>
+    <h1 class="principal_title">Bienvenido a<br><span>Capacitaciones TYM & TAT</span></h1>
     
     <section class="card-container">
         <!-- CARD TAT -->
-        <article class="card" onclick="location.href='login.html?area=tat'">
-            <header class="card-header"> 
-                <h1 class="tittle">TAT</h1>
-                <figure>
-                    <img class="icon-img" src="IMG/TAT-logo_RGB-10.png">
-                </figure>
-            </header>
-
-            <p class="desc"> Presione aqui para TAT Distribuciones del Eje Cafetero</p>
-
-            <footer>
-                <button class="btn" onclick="location.href='login.html?area=tat'">Ingresar</button>
-            </footer>
-        </article>
+        <a href="login.html?area=tat" class="card-link">
+            <article class="card">
+                <header class="card-header"> 
+                    <h1 class="tittle">TAT</h1>
+                    <figure>
+                        <img class="icon-img" src="IMG/TAT-logo_RGB-10.png">
+                    </figure>
+                </header>
+                <p class="desc"> Presione aqui para TAT Distribuciones del Eje Cafetero</p>
+                <footer>
+                    <button class="btn">Ingresar</button>
+                </footer>
+            </article>
+        </a>
 
         <!-- CARD TYM -->
-        <article class="card" onclick="location.href='login.html?area=tym'">
-            <header class="card-header">
-                <h1 class="tittle">TYM</h1>
-                <figure>
-                    <img class="icon-img" src="IMG/Logo tiendas.png" alt="TYM">
-                </figure>
-            </header> 
-
-            <p class="desc">Presione aqui para Tiendas y Marcas del Eje Cafetero</p>
-
-            <footer>
-                <button class="btn" onclick="location.href='login.html?area=tym'">Ingresar</button>
-            </footer>
-        </article>
+        <a href="login.html?area=tym" class="card-link">
+            <article class="card">
+                <header class="card-header">
+                    <h1 class="tittle">TYM</h1>
+                    <figure>
+                        <img class="icon-img" src="IMG/Logo tiendas.png" alt="TYM">
+                    </figure>
+                </header> 
+                <p class="desc">Presione aqui para Tiendas y Marcas del Eje Cafetero</p>
+                <footer>
+                    <button class="btn">Ingresar</button>
+                </footer>
+            </article>
+        </a>
     </section>
     
 </body>

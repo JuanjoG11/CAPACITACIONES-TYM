@@ -1,61 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Resultados de Evaluación </title>
-
-    <!-- FUENTE MODERNA -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
-
-    <!-- Chart.js -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus Resultados | TYM & TAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <link rel="stylesheet" href="CSS/resultado1.css">
 </head>
 <body>
     
 <header class="header-resultados">
-    <h1>Resultados de tu Evaluación </h1>  
-    <p>Visualiza tu desempeño general y por módulos</p>  
+    <h1>Resultados de tu <span>Evaluación</span></h1>  
+    <p>Visualiza tu desempeño general y progreso por módulos</p>  
 </header>
 
 <main class="contenedor-principal">
 
     <!-- RESUMEN -->
-    <section class="card-resumen" aria-labelledby="resumen-titulo">
+    <section class="card-resumen">
         <header>
-            <h2 id="resumen-titulo" class="resumen-titulo">Resultado General De</h2>
-            <h2 id="nombreUsuario" class="nombre-usuario"></h2>
+            <h2 class="resumen-titulo">Resultado General De</h2>
+            <h2 id="nombreUsuario" class="nombre-usuario">—</h2>
         </header>
         
         <article class="resultado-total">
             <p id="porcentajeFinal" class="porcentaje">0%</p>
-            <p class="descripcion">Resultado total obtenido</p>
+            <p class="descripcion">Puntaje total obtenido</p>
         </article>
     </section>
 
     <!-- GRAFICO -->
-    <section aria-labelledby="grafico-titulo">
-        <header>
-            <h2 id="grafico-titulo">Desempeño por Módulo</h2>
-        </header>
-
-        <figure class="grafico-container">
-            <canvas id="graficoResultados"></canvas>
-            <figcaption>
-                porcentaje obtenido en cada módulo (cada módulo contiene 3 preguntas).
-            </figcaption>
-        </figure>
+    <section class="grafico-container">
+        <h2 id="grafico-titulo">Desempeño por Módulo</h2>
+        <canvas id="graficoResultados"></canvas>
+        <figcaption>
+            Porcentaje obtenido en cada uno de los 6 módulos evaluados.
+        </figcaption>
     </section>
 </main>
 
 <footer class="footer-resultados">
-    <nav>
-        <a href="mode_capacitation.html" class="boton-volver">
-            Volver al Inicio
-        </a>
-    </nav>
+    <a href="mode_capacitation.html" class="boton-volver">
+        Volver al Panel Principal
+    </a>
 </footer>
 
 <script src="models/evaluationModel.js"></script>

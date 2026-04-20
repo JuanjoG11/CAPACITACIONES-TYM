@@ -1,99 +1,74 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Definimos qué evaluación le corresponde a cada página actual
+    const urlEvalMap = {
+        "aux_log.html": "logistico_evaluation.html",
+        "aux_sep.html": "separacion_evaluation.html",
+        "aux_bod.html": "auxbodega_evaluation.html",
+        "jefe_bod.html": "jefe_evaluation.html"
+    };
 
-const modules = [
-    {
-        prefix: "log",
-        evaluacion: "logistico_evaluation.html" // nombre real del archivo de evaluación
-    },
-    {
-        prefix: "sep",
-        evaluacion: "separacion_evaluation.html"
-    },
-    {
-        prefix: "bod",
-        evaluacion: "auxbodega_evaluation.html"
-    },
-    {
-        prefix: "jefe",
-        evaluacion: "jefe_evaluation.html"
+    const currentPage = window.location.pathname.split("/").pop();
+    const targetEval = urlEvalMap[currentPage] || "cards_capacitacion.html";
+
+    const slides = document.querySelectorAll(`.ind-slide`);
+    const nextBtn = document.getElementById(`ind-next`);
+    const prevBtn = document.getElementById(`ind-prev`);
+    const contador = document.getElementById(`ind-contador`);
+    const btnEval = document.getElementById(`ind-btnEvaluacion`);
+
+    if (!slides.length) return;
+
+    let index = 0;
+
+    function updateSlide(i) {
+        slides.forEach((slide, pos) => {
+            slide.classList.toggle("active", pos === i);
+        });
+
+        if (contador) {
+            contador.textContent = `${i + 1} / ${slides.length}`;
+        }
+
+        if (btnEval) {
+            // Solo habilitar el botón de evaluación al llegar al final
+            btnEval.disabled = i !== slides.length - 1;
+        }
     }
-];
 
-modules.forEach(module => {
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            if (index < slides.length - 1) {
+                index++;
+                updateSlide(index);
+            }
+        });
+    }
 
-const container = document.querySelector(`.${module.prefix}-carousel__slides`);
-const slides = document.querySelectorAll(`.${module.prefix}-slide`);
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            if (index > 0) {
+                index--;
+                updateSlide(index);
+            }
+        });
+    }
 
-const next = document.getElementById(`${module.prefix}-next`);
-const prev = document.getElementById(`${module.prefix}-prev`);
+    // Navegación por teclado
+    window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" && index < slides.length - 1) {
+            index++;
+            updateSlide(index);
+        } else if (e.key === "ArrowLeft" && index > 0) {
+            index--;
+            updateSlide(index);
+        }
+    });
 
-const contador = document.getElementById(`${module.prefix}-contador`);
-const btnEvaluacion = document.getElementById(`${module.prefix}-btnEvaluacion`);
+    if (btnEval) {
+        btnEval.addEventListener("click", () => {
+            window.location.href = targetEval;
+        });
+    }
 
-if (!container || slides.length === 0) return;
-
-let index = 0;
-
-function updateSlide(i){
-
-slides.forEach((slide, position)=>{
-slide.classList.toggle("active", position === i);
-});
-
-if(contador){
-contador.textContent = `${i + 1}/${slides.length}`;
-}
-
-if(btnEvaluacion){
-btnEvaluacion.disabled = i !== slides.length - 1;
-}
-
-}
-
-if(next){
-next.addEventListener("click", () => {
-
-if(index < slides.length - 1){
-index++;
-updateSlide(index);
-}
-
-});
-}
-
-if(prev){
-prev.addEventListener("click", () => {
-
-if(index > 0){
-index--;
-updateSlide(index);
-}
-
-});
-}
-
-window.addEventListener("keydown", (e)=>{
-
-if(e.key === "ArrowRight" && index < slides.length - 1){
-index++;
-updateSlide(index);
-}
-
-if(e.key === "ArrowLeft" && index > 0){
-index--;
-updateSlide(index);
-}
-
-});
-
-if(btnEvaluacion){
-btnEvaluacion.addEventListener("click", () => {
-window.location.href = module.evaluacion;
-});
-}
-
-updateSlide(index);
-
-});
-
+    updateSlide(index);
 });

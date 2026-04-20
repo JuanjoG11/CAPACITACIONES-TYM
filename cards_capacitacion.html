@@ -1,68 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inducción de Cargo | TYM & TAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/cards_capacitacion.css">
 </head>
 <body>
-    <h1 class="title">Ingrese la inducción a la que desea aplicar.</h1>
-    <h1 class="main-container">
-        <article class="card_one" onclick="location.href= '' ">
-            <header class="container">
-                <h1> Auxiliar Logístico </h1>
-                <img class="one_image" src="IMG/Auxil_log.jpeg" >
+    <h1 class="title">Selecciona tu <span>perfil</span> para iniciar</h1>
+    
+    <main class="main-container">
+        <!-- AUX LOGISTICO -->
+        <article class="card_one" onclick="location.href='aux_log.html'">
+            <header>
+                <h1>Auxiliar Logístico</h1>
+                <img class="one_image" src="IMG/Auxil_log.jpeg" alt="Logístico">
             </header>
-
-            <p class="descripcion">Presione aqui para la inducción de Auxiliar Logistico</p>
-
+            <p class="descripcion">Inducción técnica para el manejo de procesos logísticos y flujos de mercancía.</p>
             <footer>
-                <a href="aux_log.html"><button class="boton1">Ingresar</button></a>
+                <button class="boton1">Ingresar →</button>
             </footer>
         </article>
 
-
-        <article class="card_two" onclick="location.href= '' ">
-            <header class="container">
-                <h1> Auxiliar Separación </h1>
-                <img class="one_image" src="IMG/Auxili_sep.jpeg" >
+        <!-- AUX SEPARACION -->
+        <article class="card_two" onclick="location.href='aux_sep.html'">
+            <header>
+                <h1>Auxiliar Separación</h1>
+                <img class="one_image" src="IMG/Auxili_sep.jpeg" alt="Separación">
             </header>
-
-            <p class="descripcion">Presione aqui para la inducción de Auxiliar de Separación</p>
-
+            <p class="descripcion">Protocolos de separación, alistamiento y verificación de pedidos.</p>
             <footer>
-                <a href="aux_sep.html"><button class="boton2">Ingresar</button></a>
+                <button class="boton2">Ingresar →</button>
             </footer>
         </article>
 
-
-        <article class="card_third" onclick="location.href= '' ">
-            <header class="container">
-                <h1> Auxiliar Bodega </h1>
-                <img class="one_image" src="IMG/Auxili_bod.jpeg" >
+        <!-- AUX BODEGA -->
+        <article class="card_third" onclick="location.href='aux_bod.html'">
+            <header>
+                <h1>Auxiliar Bodega</h1>
+                <img class="one_image" src="IMG/Auxili_bod.jpeg" alt="Bodega">
             </header>
-
-            <p class="descripcion">Presione aqui para la inducción de Auxiliar de Bodega</p>
-
+            <p class="descripcion">Gestión de inventarios, almacenamiento y orden operativo en bodega.</p>
             <footer>
-                <a href="aux_bod.html"><button class="boton3">Ingresar</button></a>
+                <button class="boton3">Ingresar →</button>
             </footer>
         </article>
 
-
-        <article class="card_four" onclick="location.href= '' ">
-            <header class="container">
-                <h1> Líder de Bodega </h1>
-                <img class="one_image" src="IMG/Jefe.jpeg" >
+        <!-- LIDER BODEGA -->
+        <article class="card_four" onclick="location.href='jefe_bod.html'">
+            <header>
+                <h1>Líder de Bodega</h1>
+                <img class="one_image" src="IMG/Jefe.jpeg" alt="Líder">
             </header>
-
-            <p class="descripcion">Presione aqui para la inducción de Líder de Bodega</p>
-
+            <p class="descripcion">Inducción para roles de liderazgo, supervisión de procesos y gestión de equipos.</p>
             <footer>
-                <a href="jefe_bod.html"><button class="boton4">Ingresar</button></a>
+                <button class="boton4">Ingresar →</button>
             </footer>
         </article>
-
 
     </main>
 </body>

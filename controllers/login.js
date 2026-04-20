@@ -1,4 +1,4 @@
-import { neon } from 'https://esm.sh/jsr/@neon/serverless'
+import { neon } from 'https://esm.sh/@neondatabase/serverless'
 
 (function () {
   const DATABASE_URL = 'postgresql://neondb_owner:npg_lZf8U5sRDhWn@ep-misty-waterfall-an5hzirp-pooler.c-6.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
@@ -15,17 +15,36 @@ import { neon } from 'https://esm.sh/jsr/@neon/serverless'
   onReady(function () {
     try {
       const params = new URLSearchParams(location.search)
-      const area = params.get('area')
+      const area = (params.get('area') || '').toLowerCase().trim()
+      
       const formTat = document.getElementById('login-tat')
       const formTym = document.getElementById('login-tym')
 
-      if (area === 'tat' || area === 'tym') {
-        if (formTat) formTat.style.display = area === 'tat' ? 'block' : 'none'
-        if (formTym) formTym.style.display = area === 'tym' ? 'block' : 'none'
+      // Limpieza total y forzada: eliminamos clase active y reseteamos el style inline del HTML
+      if (formTat) {
+          formTat.classList.remove('active')
+          formTat.style.display = 'none'
+      }
+      if (formTym) {
+          formTym.classList.remove('active')
+          formTym.style.display = 'none'
+      }
+
+      if (area === 'tat' && formTat) {
+        formTat.classList.add('active')
+        formTat.style.display = 'flex' // Forzamos mostrar
+      } else if (area === 'tym' && formTym) {
+        formTym.classList.add('active')
+        formTym.style.display = 'flex' // Forzamos mostrar
+      } else {
+        // Fallback: si no hay área, mostramos ambos por si acaso
+        if (formTat) formTat.style.display = 'flex';
+        if (formTym) formTym.style.display = 'flex';
       }
     } catch (e) {
-      console.warn('No se pudo leer area param:', e)
+      console.warn('Error en la selección de área:', e)
     }
+
 
     function filtrarNombre(input) {
       input.value = input.value.replace(/[^a-záéíóúñA-ZÁÉÍÓÚÑ\s]/g, '')
@@ -87,14 +106,14 @@ import { neon } from 'https://esm.sh/jsr/@neon/serverless'
       const tipo_doc = form.querySelector('[id^="tipo_doc"]').value
       const num_doc = form.querySelector('[id^="num_doc"]').value
       const cargo = form.querySelector('[id^="cargo"]').value
-      const area = new URLSearchParams(location.search).get('area') || 'desconocido'
+      const area = new URLSearchParams(location.search).get('area') || 'tat'
 
       return {
-        nombre,
-        tipo_doc,
-        num_doc,
-        cargo,
-        area
+        nombre: nombre.substring(0, 100),
+        tipo_doc: tipo_doc.substring(0, 5),
+        num_doc: num_doc.substring(0, 20),
+        cargo: cargo.substring(0, 30),
+        area: area.substring(0, 10)
       }
     }
 
@@ -129,52 +148,57 @@ import { neon } from 'https://esm.sh/jsr/@neon/serverless'
     }
 
     async function cargarResultadosUsuario(usuarioId) {
-      const resultadoGeneral = await sql`
-        SELECT porcentaje_total, modulo_1, modulo_2, modulo_3, modulo_4, modulo_5, modulo_6, created_at
-        FROM resultados_evaluacion
-        WHERE usuario_id = ${usuarioId}
-        ORDER BY created_at DESC
-        LIMIT 1
-      `
+      try {
+        const resultadoGeneral = await sql`
+          SELECT porcentaje_total, modulo_1, modulo_2, modulo_3, modulo_4, modulo_5, modulo_6, created_at
+          FROM resultados_evaluacion
+          WHERE usuario_id = ${usuarioId}
+          ORDER BY created_at DESC
+          LIMIT 1
+        `
 
-      const resultadoModulo = await sql`
-        SELECT modulo_nombre, porcentaje_total, total_correctas, total_preguntas, respuestas_usuario, respuestas_correctas, detalle_resultado, created_at
-        FROM resultados_modulo_especifico
-        WHERE usuario_id = ${usuarioId}
-        ORDER BY created_at DESC
-        LIMIT 1
-      `
+        const resultadoModulo = await sql`
+          SELECT modulo_nombre, porcentaje_total, total_correctas, total_preguntas, respuestas_usuario, respuestas_correctas, detalle_resultado, created_at
+          FROM resultados_modulo_especifico
+          WHERE usuario_id = ${usuarioId}
+          ORDER BY created_at DESC
+          LIMIT 1
+        `
 
-      if (resultadoGeneral.length > 0) {
-        const general = resultadoGeneral[0]
-        localStorage.setItem('porcentajeTotal', general.porcentaje_total)
-        localStorage.setItem('porcentajesModulo', JSON.stringify([
-          general.modulo_1,
-          general.modulo_2,
-          general.modulo_3,
-          general.modulo_4,
-          general.modulo_5,
-          general.modulo_6
-        ]))
-      } else {
-        localStorage.removeItem('porcentajeTotal')
-        localStorage.removeItem('porcentajesModulo')
-      }
+        if (resultadoGeneral.length > 0) {
+          const general = resultadoGeneral[0]
+          localStorage.setItem('porcentajeTotal', general.porcentaje_total)
+          localStorage.setItem('porcentajesModulo', JSON.stringify([
+            general.modulo_1,
+            general.modulo_2,
+            general.modulo_3,
+            general.modulo_4,
+            general.modulo_5,
+            general.modulo_6
+          ]))
+        } else {
+          localStorage.removeItem('porcentajeTotal')
+          localStorage.removeItem('porcentajesModulo')
+        }
 
-      if (resultadoModulo.length > 0) {
-        const modulo = resultadoModulo[0]
+        if (resultadoModulo.length > 0) {
+          const modulo = resultadoModulo[0]
 
-        localStorage.setItem('resultadoModuloEspecifico', JSON.stringify({
-          moduloNombre: modulo.modulo_nombre,
-          porcentajeTotal: modulo.porcentaje_total,
-          totalCorrectas: modulo.total_correctas,
-          totalPreguntas: modulo.total_preguntas,
-          respuestasUsuario: modulo.respuestas_usuario,
-          respuestasCorrectas: modulo.respuestas_correctas,
-          detalleResultado: modulo.detalle_resultado
-        }))
-      } else {
-        localStorage.removeItem('resultadoModuloEspecifico')
+          localStorage.setItem('resultadoModuloEspecifico', JSON.stringify({
+            moduloNombre: modulo.modulo_nombre,
+            porcentajeTotal: modulo.porcentaje_total,
+            totalCorrectas: modulo.total_correctas,
+            totalPreguntas: modulo.total_preguntas,
+            respuestasUsuario: modulo.respuestas_usuario,
+            respuestasCorrectas: modulo.respuestas_correctas,
+            detalleResultado: modulo.detalle_resultado
+          }))
+        } else {
+          localStorage.removeItem('resultadoModuloEspecifico')
+        }
+      } catch (err) {
+        console.warn('No se pudieron cargar resultados anteriores (posiblemente la tabla no existe aún):', err)
+        // No bloqueamos el login por esto
       }
     }
 
@@ -184,6 +208,7 @@ import { neon } from 'https://esm.sh/jsr/@neon/serverless'
       boton.addEventListener('click', async function (e) {
         e.preventDefault()
 
+        const originalText = this.textContent
         const form = this.closest('form')
         const errores = validarFormulario(form)
 
@@ -195,6 +220,9 @@ import { neon } from 'https://esm.sh/jsr/@neon/serverless'
         const datos = recopilaDatos(form)
 
         try {
+          this.disabled = true
+          this.textContent = 'Cargando...'
+          
           limpiarLocalStorageSesion()
 
           const usuario = await iniciarSesionPorDocumento(datos)
@@ -205,7 +233,14 @@ import { neon } from 'https://esm.sh/jsr/@neon/serverless'
           window.location.href = 'mode_capacitation.html'
         } catch (error) {
           console.error(error)
-          alert('Ocurrió un error al iniciar sesión')
+          this.disabled = false
+          this.textContent = originalText
+          
+          if (error.message && error.message.includes('relation "usuarios" does not exist')) {
+            alert('Error: La base de datos no está configurada. Por favor visita setup_database.html primero.')
+          } else {
+            alert('Ocurrió un error al iniciar sesión. Verifica tu conexión a internet.')
+          }
         }
       })
     })
