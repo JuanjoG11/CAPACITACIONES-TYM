@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Capacitaciones TYM</title>
+    <link rel="stylesheet" href="CSS/admin_login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="IMG/tym-img.jpg" alt="Logo TYM" class="logo-img">
+        </div>
+        
+        <div class="login-box">
+            <h1>Acceso Administrativo</h1>
+            <p>Ingrese la contraseña maestra para gestionar los resultados.</p>
+            
+            <form id="adminLoginForm">
+                <div class="input-group">
+                    <input type="password" id="adminPassword" placeholder="Contraseña de Administrador" required>
+                </div>
+                <button type="submit" class="btn-login">Entrar al Panel</button>
+            </form>
+            <div id="loginError" style="color: #ff4d4d; margin-top: 1rem; display: none; font-size: 1.4rem;">Contraseña incorrecta</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pass = document.getElementById('adminPassword').value;
+            // Contraseña maestra (puedes cambiarla aquí o luego moverla a una variable de entorno)
+            if (pass === 'admin2024') { 
+                localStorage.setItem('adminAuth', 'true');
+                window.location.href = 'admin_dashboard.html';
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin | Capacitaciones TYM</title>
+    <link rel="stylesheet" href="CSS/admin.css">
+    <link rel="stylesheet" href="CSS/print_report.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="printArea" class="report-template">
+        <!-- El contenido se genera por JS -->
+    </div>
+
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Panel <span>Administrativo</span></h1>
+            <div class="admin-user-info">
+                <button id="btnLogout" class="btn-print" style="background: #e74c3c;">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <section class="admin-filters">
+            <input type="text" id="adminSearch" class="admin-search" placeholder="Buscar por nombre o cédula...">
+            <button class="btn-print" onclick="window.print()">Imprimir Todo</button>
+        </section>
+
+        <div class="results-table-container">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Nombre</th>
+                        <th>Cédula</th>
+                        <th>Modulo</th>
+                        <th>Resultado</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="adminResultsTable">
+                    <!-- Los resultados se cargarán aquí dinámicamente -->
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 4rem; color: rgba(255,255,255,0.4);">
+                            Cargando resultados desde la base de datos...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Script para la lógica del Dashboard -->
+    <script type="module" src="controllers/admin_dashboard.js"></script>
+    <script>
+        // Protección de ruta
+        if (localStorage.getItem('adminAuth') !== 'true') {
+            window.location.href = 'admin_login.html';
+        }
+        
+        document.getElementById('btnLogout').addEventListener('click', () => {
+            localStorage.removeItem('adminAuth');
+            window.location.href = 'admin_login.html';
+        });
+    </script>
+</body>
+</html>

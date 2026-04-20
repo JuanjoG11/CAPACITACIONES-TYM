@@ -1,0 +1,108 @@
+/* ── Estilos para Acta de Evaluación de Capacitación ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.report-template {
+    display: none; /* Oculto en el dashboard */
+    font-family: 'Inter', sans-serif;
+    color: #000;
+    padding: 30px;
+    background: #fff;
+    width: 210mm;
+    margin: 0 auto;
+}
+
+@media print {
+    /* ── ARREGLO CRÍTICO: Eliminar por completo el resto del sitio para evitar páginas extra ── */
+    body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+    .admin-container, header, .admin-filters, .admin-header, #btnLogout { display: none !important; }
+    
+    .report-template { 
+        display: block !important; 
+        position: relative !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        visibility: visible !important;
+    }
+    
+    @page { 
+        size: auto; 
+        margin: 1.5cm; /* Margen limpio */
+    }
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.report-header .company-info h2 {
+    margin: 0;
+    color: #1a2a3a;
+    font-size: 22px;
+}
+
+.report-header .logo-report { width: 90px; }
+
+.report-title {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.report-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.info-item { font-size: 13px; line-height: 1.4; }
+.info-item strong { color: #555; text-transform: uppercase; font-size: 10px; }
+
+.report-summary-box {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    background: #1a2a3a;
+    color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.summary-score { text-align: center; }
+.summary-score h3 { margin: 0; font-size: 24px; }
+.summary-score p { margin: 0; font-size: 10px; opacity: 0.8; }
+
+.questions-detail { width: 100%; border-collapse: collapse; }
+.questions-detail th { text-align: left; background: #f2f2f2; padding: 10px; font-size: 11px; border-bottom: 2px solid #ddd; }
+.questions-detail td { padding: 10px; border-bottom: 1px solid #eee; font-size: 11px; }
+
+.status-ok { color: #27ae60 !important; font-weight: 700; }
+.status-err { color: #c0392b !important; font-weight: 700; }
+
+.footer-signatures {
+    margin-top: 60px; /* Espacio para firmas */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    text-align: center;
+}
+
+.sig-line {
+    border-top: 1px solid #000;
+    padding-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
